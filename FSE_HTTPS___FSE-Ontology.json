@@ -1,0 +1,38 @@
+{
+  "@context": {
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "FSE": "https://FSE-Ontology",
+    "@vocab": "http://api.stardog.com/",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "stardog": "tag:stardog:api:",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "HTTPS://FSE-Ontology",
+      "@graph": [
+        {
+          "@id": "https://FSE-Ontologynegro",
+          "@type": "owl:Class",
+          "tag:stardog:studio:label": {
+            "@value": "negro"
+          },
+          "rdfs:label": {
+            "@value": "negro"
+          }
+        },
+        {
+          "@id": "https://FSE-Ontologybianco",
+          "@type": "owl:Class",
+          "tag:stardog:studio:label": {
+            "@value": "bianco"
+          },
+          "rdfs:label": {
+            "@value": "bianco"
+          }
+        }
+      ]
+    }
+  ]
+}
