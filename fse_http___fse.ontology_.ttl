@@ -1,20 +1,21 @@
 @prefix : <http://api.stardog.com/> .
-@prefix stardog: <tag:stardog:api:> .
+@prefix doid: <https://disease-ontology.org> .
 @prefix dron: <http://purl.obolibrary.org/obo/dron.owl> .
+@prefix foaf: <http://xmlns.com/foaf/spec/index.rdf> .
+@prefix fse: <https://fse.ontology/> .
+@prefix loinc: <https://loinc.org/document-ontology/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix doid: <https://disease-ontology.org> .
-@prefix fse: <https://fse.ontology/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix foaf: <http://xmlns.com/foaf/spec/index.rdf> .
-@prefix loinc: <https://loinc.org/document-ontology/> .
+@prefix stardog: <tag:stardog:api:> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix org: <http://www.w3.org/ns/org#> .
 
 fse:clinicalDocument a owl:Class ;
    <tag:stardog:studio:label> "clinicalDocument" ;
    rdfs:label "clinicalDocument" ;
    rdfs:comment "A generic clinical document." ;
-   owl:unionOf _:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_156 .
+   owl:unionOf _:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_166 .
 fse:confidentialityCode a owl:DatatypeProperty ;
    <tag:stardog:studio:label> "confidentialityCode" ;
    rdfs:label "confidentialityCode" ;
@@ -255,28 +256,6 @@ fse:hasMedicinal a owl:ObjectProperty ;
    rdfs:label "hasMedicinal" ;
    rdfs:domain fse:therapyMedicinal ;
    rdfs:range <http://purl.obolibrary.org/obo/dron.owlDRON_00000005> .
-_:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_156 rdf:first fse:summaryHealthProfile ;
-   rdf:rest _:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_157 .
-_:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_157 rdf:first fse:firstAidReport ;
-   rdf:rest _:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_158 .
-_:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_158 rdf:first fse:outpatientSpecialistReport ;
-   rdf:rest _:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_159 .
-_:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_159 rdf:first fse:radiologyReport ;
-   rdf:rest _:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_160 .
-_:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_160 rdf:first fse:laboratoryMedicineReport ;
-   rdf:rest _:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_161 .
-_:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_161 rdf:first fse:hospitalDischargeLetter ;
-   rdf:rest _:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_162 .
-_:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_162 rdf:first fse:prescription ;
-   rdf:rest _:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_163 .
-_:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_163 rdf:first fse:exemption ;
-   rdf:rest _:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_164 .
-_:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_164 rdf:first fse:immunization ;
-   rdf:rest rdf:nil .
-_:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_165 a owl:Restriction ;
-   owl:onProperty fse:cameWith ;
-   owl:minCardinalityQ 0 ;
-   owl:maxCardinalityQ 1 .
 fse:startDate a owl:DatatypeProperty ;
    <tag:stardog:studio:label> "startDate" ;
    rdfs:label "startDate" ;
@@ -292,3 +271,62 @@ fse:hasTherapy a owl:ObjectProperty ;
    rdfs:label "hasTherapy" ;
    rdfs:domain fse:summaryHealthProfile ;
    rdfs:range fse:therapy .
+fse:healthOrganization a owl:Class ;
+   <tag:stardog:studio:label> "healthOrganization" ;
+   rdfs:label "healthOrganization" ;
+   rdfs:subClassOf org:Organization .
+fse:belongsTo a owl:ObjectProperty ;
+   <tag:stardog:studio:label> "belongsTo" ;
+   rdfs:label "belongsTo" ;
+   rdfs:domain fse:healthWorker ;
+   rdfs:range fse:healthOrganization .
+fse:hasCustodian a owl:ObjectProperty ;
+   <tag:stardog:studio:label> "hasCustodian" ;
+   rdfs:label "hasCustodian" ;
+   rdfs:domain fse:clinicalDocument ;
+   rdfs:range fse:healthOrganization .
+fse:healthcareFacility a owl:Class ;
+   <tag:stardog:studio:label> "healthcareFacility" ;
+   rdfs:label "healthcareFacility" ;
+   rdfs:subClassOf org:Site .
+fse:worksIn a owl:ObjectProperty ;
+   <tag:stardog:studio:label> "worksIn" ;
+   rdfs:label "worksIn" ;
+   rdfs:domain fse:healthWorker ;
+   rdfs:range fse:healthcareFacility .
+fse:laboratory a owl:Class ;
+   <tag:stardog:studio:label> "laboratory" ;
+   rdfs:label "laboratory" ;
+   rdfs:subClassOf fse:healthcareFacility .
+fse:hasLaboratory a owl:ObjectProperty ;
+   <tag:stardog:studio:label> "hasLaboratory" ;
+   rdfs:label "hasLaboratory" ;
+   rdfs:domain fse:clinicalDocument ;
+   rdfs:range fse:laboratory .
+fse:hasDisease a owl:ObjectProperty ;
+   <tag:stardog:studio:label> "hasDisease" ;
+   rdfs:label "hasDisease" ;
+   rdfs:domain fse:summaryHealthProfile ;
+   rdfs:range <https://disease-ontology.orgdisease> .
+_:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_166 rdf:first fse:summaryHealthProfile ;
+   rdf:rest _:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_167 .
+_:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_167 rdf:first fse:firstAidReport ;
+   rdf:rest _:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_168 .
+_:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_168 rdf:first fse:outpatientSpecialistReport ;
+   rdf:rest _:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_169 .
+_:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_169 rdf:first fse:radiologyReport ;
+   rdf:rest _:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_170 .
+_:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_170 rdf:first fse:laboratoryMedicineReport ;
+   rdf:rest _:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_171 .
+_:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_171 rdf:first fse:hospitalDischargeLetter ;
+   rdf:rest _:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_172 .
+_:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_172 rdf:first fse:prescription ;
+   rdf:rest _:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_173 .
+_:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_173 rdf:first fse:exemption ;
+   rdf:rest _:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_174 .
+_:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_174 rdf:first fse:immunization ;
+   rdf:rest rdf:nil .
+_:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_175 a owl:Restriction ;
+   owl:onProperty fse:cameWith ;
+   owl:minCardinalityQ 0 ;
+   owl:maxCardinalityQ 1 .
