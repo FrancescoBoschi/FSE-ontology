@@ -14,9 +14,7 @@ fse:clinicalDocument a owl:Class ;
    <tag:stardog:studio:label> "clinicalDocument" ;
    rdfs:label "clinicalDocument" ;
    rdfs:comment "A generic clinical document." ;
-   owl:unionOf _:bnode_3e6e28cf_0a86_482a_83ef_1230135b450f_190 .
-_:bnode_3e6e28cf_0a86_482a_83ef_1230135b450f_190 rdf:first fse:summaryHealthProfile ;
-   rdf:rest _:bnode_3e6e28cf_0a86_482a_83ef_1230135b450f_191 .
+   owl:unionOf _:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_156 .
 fse:confidentialityCode a owl:DatatypeProperty ;
    <tag:stardog:studio:label> "confidentialityCode" ;
    rdfs:label "confidentialityCode" ;
@@ -208,26 +206,6 @@ fse:cameWith a owl:ObjectProperty ;
    rdfs:label "cameWith" ;
    rdfs:domain fse:firstAidReport ;
    rdfs:range fse:vehicle .
-_:0 a owl:Restriction ;
-   owl:onProperty fse:cameWith ;
-   owl:minCardinalityQ 0 ;
-   owl:maxCardinalityQ 1 .
-_:bnode_3e6e28cf_0a86_482a_83ef_1230135b450f_191 rdf:first fse:firstAidReport ;
-   rdf:rest _:bnode_3e6e28cf_0a86_482a_83ef_1230135b450f_192 .
-_:bnode_3e6e28cf_0a86_482a_83ef_1230135b450f_192 rdf:first fse:outpatientSpecialistReport ;
-   rdf:rest _:bnode_3e6e28cf_0a86_482a_83ef_1230135b450f_193 .
-_:bnode_3e6e28cf_0a86_482a_83ef_1230135b450f_193 rdf:first fse:radiologyReport ;
-   rdf:rest _:bnode_3e6e28cf_0a86_482a_83ef_1230135b450f_194 .
-_:bnode_3e6e28cf_0a86_482a_83ef_1230135b450f_194 rdf:first fse:laboratoryMedicineReport ;
-   rdf:rest _:bnode_3e6e28cf_0a86_482a_83ef_1230135b450f_195 .
-_:bnode_3e6e28cf_0a86_482a_83ef_1230135b450f_195 rdf:first fse:hospitalDischargeLetter ;
-   rdf:rest _:bnode_3e6e28cf_0a86_482a_83ef_1230135b450f_196 .
-_:bnode_3e6e28cf_0a86_482a_83ef_1230135b450f_196 rdf:first fse:prescription ;
-   rdf:rest _:bnode_3e6e28cf_0a86_482a_83ef_1230135b450f_197 .
-_:bnode_3e6e28cf_0a86_482a_83ef_1230135b450f_197 rdf:first fse:exemption ;
-   rdf:rest _:bnode_3e6e28cf_0a86_482a_83ef_1230135b450f_198 .
-_:bnode_3e6e28cf_0a86_482a_83ef_1230135b450f_198 rdf:first fse:immunization ;
-   rdf:rest rdf:nil .
 fse:pregnancy a owl:Class ;
    <tag:stardog:studio:label> "pregnancy" ;
    rdfs:label "pregnancy" .
@@ -256,3 +234,61 @@ fse:hasMedicalNotes a owl:DatatypeProperty ;
    rdfs:label "hasMedicalNotes" ;
    rdfs:domain fse:summaryHealthProfile ;
    rdfs:range xsd:string .
+fse:hasAllergy a owl:ObjectProperty ;
+   <tag:stardog:studio:label> "hasAllergy" ;
+   rdfs:label "hasAllergy" ;
+   rdfs:domain fse:summaryHealthProfile ;
+   rdfs:range <https://disease-ontology.org1205> .
+fse:therapy a owl:Class ;
+   <tag:stardog:studio:label> "therapy" ;
+   rdfs:label "therapy" .
+fse:therapyMedicinal a owl:Class ;
+   <tag:stardog:studio:label> "therapyMedicinal" ;
+   rdfs:label "therapyMedicinal" .
+fse:hasIntake a owl:ObjectProperty ;
+   <tag:stardog:studio:label> "hasIntake" ;
+   rdfs:label "hasIntake" ;
+   rdfs:domain fse:therapy ;
+   rdfs:range fse:therapyMedicinal .
+fse:hasMedicinal a owl:ObjectProperty ;
+   <tag:stardog:studio:label> "hasMedicinal" ;
+   rdfs:label "hasMedicinal" ;
+   rdfs:domain fse:therapyMedicinal ;
+   rdfs:range <http://purl.obolibrary.org/obo/dron.owlDRON_00000005> .
+_:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_156 rdf:first fse:summaryHealthProfile ;
+   rdf:rest _:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_157 .
+_:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_157 rdf:first fse:firstAidReport ;
+   rdf:rest _:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_158 .
+_:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_158 rdf:first fse:outpatientSpecialistReport ;
+   rdf:rest _:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_159 .
+_:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_159 rdf:first fse:radiologyReport ;
+   rdf:rest _:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_160 .
+_:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_160 rdf:first fse:laboratoryMedicineReport ;
+   rdf:rest _:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_161 .
+_:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_161 rdf:first fse:hospitalDischargeLetter ;
+   rdf:rest _:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_162 .
+_:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_162 rdf:first fse:prescription ;
+   rdf:rest _:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_163 .
+_:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_163 rdf:first fse:exemption ;
+   rdf:rest _:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_164 .
+_:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_164 rdf:first fse:immunization ;
+   rdf:rest rdf:nil .
+_:bnode_d93bb818_0f74_4e0b_907b_ea97b70d3bd1_165 a owl:Restriction ;
+   owl:onProperty fse:cameWith ;
+   owl:minCardinalityQ 0 ;
+   owl:maxCardinalityQ 1 .
+fse:startDate a owl:DatatypeProperty ;
+   <tag:stardog:studio:label> "startDate" ;
+   rdfs:label "startDate" ;
+   rdfs:domain fse:therapyMedicinal ;
+   rdfs:range xsd:date .
+fse:dailyQuantity a owl:DatatypeProperty ;
+   <tag:stardog:studio:label> "dailyQuantity" ;
+   rdfs:label "dailyQuantity" ;
+   rdfs:domain fse:therapyMedicinal ;
+   rdfs:range xsd:decimal .
+fse:hasTherapy a owl:ObjectProperty ;
+   <tag:stardog:studio:label> "hasTherapy" ;
+   rdfs:label "hasTherapy" ;
+   rdfs:domain fse:summaryHealthProfile ;
+   rdfs:range fse:therapy .
