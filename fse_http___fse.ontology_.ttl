@@ -1,21 +1,21 @@
+@prefix stardog: <tag:stardog:api:> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix : <http://api.stardog.com/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix foaf: <http://xmlns.com/foaf/spec/index.rdf> .
+@prefix loinc: <https://loinc.org/document-ontology/> .
 @prefix doid: <https://disease-ontology.org> .
 @prefix dron: <http://purl.obolibrary.org/obo/dron.owl> .
-@prefix foaf: <http://xmlns.com/foaf/spec/index.rdf> .
 @prefix fse: <https://fse.ontology/> .
-@prefix loinc: <https://loinc.org/document-ontology/> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix stardog: <tag:stardog:api:> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 
 fse:clinicalDocument a owl:Class ;
    <tag:stardog:studio:label> "clinicalDocument" ;
    rdfs:label "clinicalDocument" ;
    rdfs:comment "A generic clinical document." ;
-   owl:unionOf _:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_166 .
+   owl:unionOf _:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_202 .
 fse:confidentialityCode a owl:DatatypeProperty ;
    <tag:stardog:studio:label> "confidentialityCode" ;
    rdfs:label "confidentialityCode" ;
@@ -44,17 +44,15 @@ fse:versionNumber a owl:DatatypeProperty ;
 fse:healthWorker a owl:Class ;
    <tag:stardog:studio:label> "healthWorker" ;
    rdfs:label "healthWorker" ;
-   rdfs:subClassOf <http://xmlns.com/foaf/spec/index.rdfPerson> , fse:author ;
-   owl:disjointWith fse:device .
+   rdfs:subClassOf <http://xmlns.com/foaf/spec/index.rdfPerson> .
 fse:author a owl:Class ;
    <tag:stardog:studio:label> "author" ;
    rdfs:label "author" ;
-   rdfs:comment "VAC" .
+   rdfs:comment "VAC" ;
+   rdfs:subClassOf _:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_211 .
 fse:device a owl:Class ;
    <tag:stardog:studio:label> "device" ;
-   rdfs:label "device" ;
-   rdfs:subClassOf fse:author ;
-   owl:disjointWith fse:healthWorker .
+   rdfs:label "device" .
 fse:hasAuthor a owl:ObjectProperty ;
    <tag:stardog:studio:label> "hasAuthor" ;
    rdfs:label "hasAuthor" ;
@@ -308,25 +306,105 @@ fse:hasDisease a owl:ObjectProperty ;
    rdfs:label "hasDisease" ;
    rdfs:domain fse:summaryHealthProfile ;
    rdfs:range <https://disease-ontology.orgdisease> .
-_:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_166 rdf:first fse:summaryHealthProfile ;
-   rdf:rest _:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_167 .
-_:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_167 rdf:first fse:firstAidReport ;
-   rdf:rest _:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_168 .
-_:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_168 rdf:first fse:outpatientSpecialistReport ;
-   rdf:rest _:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_169 .
-_:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_169 rdf:first fse:radiologyReport ;
-   rdf:rest _:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_170 .
-_:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_170 rdf:first fse:laboratoryMedicineReport ;
-   rdf:rest _:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_171 .
-_:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_171 rdf:first fse:hospitalDischargeLetter ;
-   rdf:rest _:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_172 .
-_:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_172 rdf:first fse:prescription ;
-   rdf:rest _:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_173 .
-_:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_173 rdf:first fse:exemption ;
-   rdf:rest _:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_174 .
-_:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_174 rdf:first fse:immunization ;
+fse:reportType a owl:Class ;
+   <tag:stardog:studio:label> "reportType" ;
+   rdfs:label "reportType" ;
+   owl:unionOf _:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_214 .
+fse:hasType a owl:ObjectProperty ;
+   <tag:stardog:studio:label> "hasType" ;
+   rdfs:label "hasType" ;
+   rdfs:domain fse:laboratoryMedicineReport ;
+   rdfs:range fse:reportType .
+fse:inFulfillmentOf a owl:ObjectProperty ;
+   <tag:stardog:studio:label> "inFulfillmentOf" ;
+   rdfs:label "inFulfillmentOf" ;
+   rdfs:domain fse:clinicalDocument ;
+   rdfs:range fse:clinicalDocument .
+fse:specialistReportType a owl:DatatypeProperty ;
+   <tag:stardog:studio:label> "specialistReportType" ;
+   rdfs:label "specialistReportType" ;
+   rdfs:domain fse:radiologyReport ;
+   rdfs:range xsd:string .
+fse:hasSpecialistReportType a owl:DatatypeProperty ;
+   <tag:stardog:studio:label> "hasSpecialistReportType" ;
+   rdfs:label "hasSpecialistReportType" ;
+   rdfs:domain fse:outpatientSpecialistReport ;
+   rdfs:range _:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_235 .
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_202 rdf:first fse:summaryHealthProfile ;
+   rdf:rest _:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_203 .
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_203 rdf:first fse:firstAidReport ;
+   rdf:rest _:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_204 .
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_204 rdf:first fse:outpatientSpecialistReport ;
+   rdf:rest _:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_205 .
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_205 rdf:first fse:radiologyReport ;
+   rdf:rest _:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_206 .
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_206 rdf:first fse:laboratoryMedicineReport ;
+   rdf:rest _:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_207 .
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_207 rdf:first fse:hospitalDischargeLetter ;
+   rdf:rest _:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_208 .
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_208 rdf:first fse:prescription ;
+   rdf:rest _:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_209 .
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_209 rdf:first fse:exemption ;
+   rdf:rest _:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_210 .
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_210 rdf:first fse:immunization ;
    rdf:rest rdf:nil .
-_:bnode_73edf2ac_d2b3_4925_8247_fc09de0482cd_175 a owl:Restriction ;
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_211 a owl:Class ;
+   owl:oneOf _:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_212 .
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_212 rdf:first fse:healthWorker ;
+   rdf:rest _:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_213 .
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_213 rdf:first fse:device ;
+   rdf:rest rdf:nil .
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_214 rdf:first loinc:18717-9 ;
+   rdf:rest _:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_215 .
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_215 rdf:first loinc:18718-7 ;
+   rdf:rest _:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_216 .
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_216 rdf:first loinc:18719-5 ;
+   rdf:rest _:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_217 .
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_217 rdf:first loinc:18720-3 ;
+   rdf:rest _:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_218 .
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_218 rdf:first loinc:18721-1 ;
+   rdf:rest _:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_219 .
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_219 rdf:first loinc:18722-9 ;
+   rdf:rest _:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_220 .
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_220 rdf:first loinc:18723-7 ;
+   rdf:rest _:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_221 .
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_221 rdf:first loinc:18724-5 ;
+   rdf:rest _:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_222 .
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_222 rdf:first loinc:18725-2 ;
+   rdf:rest _:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_223 .
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_223 rdf:first loinc:18727-8 ;
+   rdf:rest _:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_224 .
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_224 rdf:first loinc:18728-6 ;
+   rdf:rest _:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_225 .
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_225 rdf:first loinc:18729-4 ;
+   rdf:rest _:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_226 .
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_226 rdf:first loinc:18767-4 ;
+   rdf:rest _:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_227 .
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_227 rdf:first loinc:18768-2 ;
+   rdf:rest _:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_228 .
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_228 rdf:first loinc:18769-0 ;
+   rdf:rest _:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_229 .
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_229 rdf:first loinc:26435-8 ;
+   rdf:rest _:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_230 .
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_230 rdf:first loinc:26436-6 ;
+   rdf:rest _:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_231 .
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_231 rdf:first loinc:26437-4 ;
+   rdf:rest _:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_232 .
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_232 rdf:first loinc:26438-2 ;
+   rdf:rest _:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_233 .
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_233 rdf:first loinc:18716-1 ;
+   rdf:rest _:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_234 .
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_234 rdf:first loinc:26439-0 ;
+   rdf:rest rdf:nil .
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_235 a rdfs:Datatype ;
+   owl:oneOf _:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_236 .
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_236 rdf:first "Ortopedia" ;
+   rdf:rest _:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_237 .
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_237 rdf:first "Cardiologia" ;
+   rdf:rest _:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_238 .
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_238 rdf:first "Odontoiatria" ;
+   rdf:rest rdf:nil .
+_:bnode_c0a06008_e3a3_4e15_83cc_bf82f4b565f1_239 a owl:Restriction ;
    owl:onProperty fse:cameWith ;
    owl:minCardinalityQ 0 ;
    owl:maxCardinalityQ 1 .
