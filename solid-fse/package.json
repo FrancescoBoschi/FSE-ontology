@@ -1,0 +1,25 @@
+{
+  "name": "solid-fse",
+  "version": "0.0.0",
+  "description": "",
+  "license": "MIT",
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "solid-app-router": "^0.1.4",
+    "solid-js": "^1.0.7",
+    "solid-transition-group": "^0.0.8",
+    "stardog": "^3.2.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.3.1",
+    "postcss": "^8.3.6",
+    "tailwindcss": "^2.2.7",
+    "vite": "^2.4.4",
+    "vite-plugin-solid": "^2.0.1"
+  }
+}
