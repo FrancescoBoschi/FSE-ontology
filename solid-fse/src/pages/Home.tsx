@@ -1,5 +1,5 @@
 import { Component, onMount } from "solid-js"
-import { Connection, db } from "stardog"
+import { Connection, db, query } from "stardog"
 
 const Home: Component = () => {
 
@@ -21,6 +21,14 @@ const Home: Component = () => {
 
     const { body: model } = await db.model(conn, "fse", {}, { reasoning: true })
     console.log(model)
+
+    query.execute(conn, 'fse', `SELECT ?healthWorker FROM <https://fse.ontology/> WHERE { ?healthWorker rdf:type fse:healthWorker . } `, 'application/sparql-results+json', {
+      limit: 10,
+      reasoning: true,
+      offset: 0,
+    }).then((r) => {
+      console.log(r);
+    });
   })
 
   return (
