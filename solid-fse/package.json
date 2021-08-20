@@ -12,7 +12,6 @@
   "dependencies": {
     "solid-app-router": "^0.1.4",
     "solid-js": "^1.0.7",
-    "solid-transition-group": "^0.0.8",
     "stardog": "^3.2.0"
   },
   "devDependencies": {

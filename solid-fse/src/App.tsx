@@ -2,23 +2,25 @@ import { Component, lazy } from "solid-js"
 import { Routes, Route } from "solid-app-router"
 import Nav from "./components/Nav"
 
-const Home = lazy(() => import("./pages/Home"))
-const Counter = lazy(() => import("./pages/Counter"))
-const Todo = lazy(() => import("./pages/Todo"))
+const Patients = lazy(() => import("./pages/Patients"))
+const Search = lazy(() => import("./pages/Search"))
+const Register = lazy(() => import("./pages/Register"))
+const Stats = lazy(() => import("./pages/Stats"))
 const NotFound = lazy(() => import("./pages/NotFound"))
-
-// TODO: transitions, scoped styles
 
 const App: Component = () => {
   return (
     <>
       <Nav/>
-      <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/counter" element={<Counter/>}/>
-        <Route path="/todo" element={<Todo/>}/>
-        <Route path="/*all" element={<NotFound/>}/>
-      </Routes>
+      <div class="container flex-grow p-6">
+        <Routes>
+          <Route path="/" element={<Patients/>}/>
+          <Route path="/search" element={<Search/>}/>
+          <Route path="/register" element={<Register/>}/>
+          <Route path="/stats" element={<Stats/>}/>
+          <Route path="/*all" element={<NotFound/>}/>
+        </Routes>
+      </div>
     </>
   )
 }

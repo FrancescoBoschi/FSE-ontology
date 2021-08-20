@@ -16,18 +16,20 @@ code {
 }
 
 a {
-  color: #b318f0;
   text-decoration: underline;
+}
+
+a.active {
+  @apply text-blue-400;
 }
 
 #app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
   color: white;
-  background-color: #282c34;
-  text-align: center;
-  font-size: calc(10px + 1vmin);
+  @apply bg-gray-800;
 }
 
 .page {
@@ -38,26 +40,23 @@ a {
   align-items: center;
 }
 
-.fade-enter {
-  opacity: 0;
-}
+@layer components {
 
-.fade-enter-to {
-  opacity: 1;
-}
+  .btn { @apply
+    bg-blue-400
+    text-gray-700 font-semibold
+    border-2 border-blue-400
+    focus:border-blue-300
+    px-4 py-2 rounded-lg;
+  }
 
-.fade-enter-active {
-  transition: opacity 0.3s ease;
-}
+  .input { @apply
+    bg-gray-700
+    text-white
+    px-4 p-2 rounded-lg
+    outline-none
+    border-2 border-gray-700
+    focus:border-gray-600;
+  }
 
-.fade-leave {
-  opacity: 1;
-}
-
-.fade-leave-to {
-  opacity: 0;
-}
-
-.fade-leave-active {
-  transition: opacity 0.3s ease;
 }

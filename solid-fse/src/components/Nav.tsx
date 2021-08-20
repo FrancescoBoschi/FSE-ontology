@@ -1,26 +1,19 @@
 import type { Component } from "solid-js"
 import { NavLink } from "solid-app-router"
+import SearchPatient from "./SearchPatient"
 
 const navLink = `
-  inline-block
-  px-2 py-1
-  text-white
+  text-lg text-white no-underline
 `
 
 const Nav: Component = () => (
-  <>
-    <div>
-      <NavLink class={navLink} href="/" end>Home</NavLink>
-      <NavLink class={navLink} href="/counter">Counter</NavLink>
-      <NavLink class={navLink} href="/todo">Todo</NavLink>
-    </div>
-
-    <style>{`
-      a.active {
-        color: #b318f0;
-      }
-    `}</style>
-  </>
+  <div class="container flex items-center gap-6 p-6">
+    <SearchPatient/>
+    <div class="flex-grow"></div>
+    <NavLink class={navLink} href="/" end>Pazienti</NavLink>
+    <NavLink class={navLink} href="/register">Registra</NavLink>
+    <NavLink class={navLink} href="/stats">Statistiche</NavLink>
+  </div>
 )
 
 export default Nav
