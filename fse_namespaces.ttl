@@ -1,9 +1,8 @@
 PREFIX : <http://api.stardog.com/>
-PREFIX doid: <https://disease-ontology.org>
-PREFIX dron: <http://purl.obolibrary.org/obo/dron.owl>
-PREFIX foaf: <http://xmlns.com/foaf/spec/index.rdf>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX fse: <https://fse.ontology/>
-PREFIX loinc: <https://loinc.org/document-ontology/>
+PREFIX loinc: <http://purl.bioontology.org/ontology/LNC/>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
 PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
