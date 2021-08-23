@@ -11,7 +11,7 @@ const Patient: Component = () => {
 
   return (
     <Switch fallback={
-      <div class="patient flex gap-6">
+      <div class="patient flex gap-12">
         <div class="w-1/4"><PatientInfo patient={patient()}/></div>
         <div class="w-3/4"><PatientDocs patient={patient()}/></div>
       </div>
