@@ -21,10 +21,10 @@ const Patients: Component = () => {
       </div>
     }>
       <Match when={patients.loading}>
-        <p>Loading...</p>
+        <p class="text-center">Loading...</p>
       </Match>
       <Match when={patients.error}>
-        <p>An error occurred.</p>
+        <p class="text-center">An error occurred.</p>
       </Match>
     </Switch>
   )
