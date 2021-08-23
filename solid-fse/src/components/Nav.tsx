@@ -7,7 +7,7 @@ const navLink = `
 `
 
 const Nav: Component = () => (
-  <div class="container flex items-center gap-6 p-6">
+  <div class="container max-w-4xl flex items-center gap-6 p-6">
     <SearchPatient/>
     <div class="flex-grow"></div>
     <NavLink class={navLink} href="/" end>Pazienti</NavLink>

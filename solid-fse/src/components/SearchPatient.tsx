@@ -1,30 +1,17 @@
-import { Component, createSignal } from "solid-js"
-import { useNavigate } from "solid-app-router"
+import { Component } from "solid-js"
+import useSearch from "../hooks/useSearch"
 
 const SearchPatient: Component = () => {
-  const navigate = useNavigate()
-
-  const [search, setSearch] = createSignal("")
-
-  const onSubmit = (e: Event) => {
-    e.preventDefault()
-    if (search() == "") return
-    const text = search()
-    setSearch("")
-    navigate(`/search?name=${text}`)
-  }
+  const { search, setSearch } = useSearch()
 
   return (
-    <form onSubmit={onSubmit}>
-      <input
-        class="input rounded-r-none"
-        type="text"
-        placeholder="Cerca un paziente"
-        value={search()}
-        onChange={(e) => setSearch(e.currentTarget.value)}
-      />
-      <button class="btn rounded-l-none" type="submit">Cerca</button>
-    </form>
+    <input
+      class="input w-80"
+      type="text"
+      placeholder="Cerca un paziente"
+      value={search()}
+      onKeyUp={(e) => setSearch(e.currentTarget.value)}
+    />
   )
 }
 
