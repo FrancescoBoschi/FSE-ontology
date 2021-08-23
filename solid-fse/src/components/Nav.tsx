@@ -1,18 +1,32 @@
 import type { Component } from "solid-js"
-import { NavLink } from "solid-app-router"
+import { NavLink, useLocation, useNavigate } from "solid-app-router"
 import useSearch from "../hooks/useSearch"
 
 const SearchBar: Component = () => {
+
   const { search, setSearch } = useSearch()
 
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  const onSubmit = (e: Event) => {
+    e.preventDefault()
+    if (location.pathname != "/") navigate("/")
+  }
+
   return (
-    <input
-      class="input w-80"
-      type="text"
-      placeholder="Cerca un paziente"
-      value={search()}
-      onKeyUp={(e) => setSearch(e.currentTarget.value)}
-    />
+    <form onSubmit={onSubmit} class="flex">
+      <input
+        class="input w-72 rounded-r-none"
+        type="text"
+        placeholder="Cerca un paziente"
+        value={search()}
+        onKeyUp={(e) => setSearch(e.currentTarget.value)}
+      />
+      <button type="submit" class="btn h-[44px] rounded-l-none">
+        <i class="mdi mdi-magnify"></i>
+      </button>
+    </form>
   )
 }
 
