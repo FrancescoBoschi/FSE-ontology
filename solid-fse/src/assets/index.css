@@ -52,6 +52,10 @@ a.active {
     disabled:pointer-events-none;
   }
 
+  .btn.inverted { @apply
+    bg-gray-200 border-gray-200 focus:border-gray-400;
+  }
+
   .input { @apply
     bg-gray-700
     text-white

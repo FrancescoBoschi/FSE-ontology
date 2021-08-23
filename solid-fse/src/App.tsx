@@ -5,7 +5,7 @@ import Nav from "./components/Nav"
 const Patients = lazy(() => import("./pages/Patients"))
 const Patient = lazy(() => import("./pages/Patient"))
 const Register = lazy(() => import("./pages/Register"))
-const Stats = lazy(() => import("./pages/Stats"))
+const Queries = lazy(() => import("./pages/Queries"))
 const NotFound = lazy(() => import("./pages/NotFound"))
 
 const App: Component = () => {
@@ -17,7 +17,7 @@ const App: Component = () => {
           <Route path="/" element={<Patients/>}/>
           <Route path="/patients/:name" element={<Patient/>}/>
           <Route path="/register" element={<Register/>}/>
-          <Route path="/stats" element={<Stats/>}/>
+          <Route path="/queries" element={<Queries/>}/>
           <Route path="/*all" element={<NotFound/>}/>
         </Routes>
       </div>

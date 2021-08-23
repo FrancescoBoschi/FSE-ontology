@@ -1,9 +1,7 @@
 import { Component, createMemo } from "solid-js"
 import { PatientDetails } from "../models/Patient"
 
-interface Props { patient: PatientDetails }
-
-const PatientInfo: Component<Props> = (props) => {
+const PatientInfo: Component<{ patient: PatientDetails }> = (props) => {
   const avatarLetter = createMemo(() => props.patient.name[0].toUpperCase())
 
   return (
