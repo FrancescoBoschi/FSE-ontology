@@ -5,11 +5,10 @@ import { Patient } from "../models/Patient"
 interface Props { patient: Patient }
 
 const PatientCard: Component<Props> = (props) => {
-
   const avatarLetter = createMemo(() => props.patient.name[0].toUpperCase())
 
   return (
-    <Link href="/" class="no-underline flex items-center gap-6 rounded-full hover:bg-gray-700">
+    <Link href={`/patients/${props.patient.name}`} class="no-underline flex items-center gap-6 rounded-full hover:bg-gray-700">
       <div class="
         avatar
         w-12 h-12 rounded-full

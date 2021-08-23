@@ -15,7 +15,7 @@ const App: Component = () => {
       <div class="container max-w-4xl flex-grow p-6">
         <Routes>
           <Route path="/" element={<Patients/>}/>
-          <Route path="/patient/:name" element={<Patient/>}/>
+          <Route path="/patients/:name" element={<Patient/>}/>
           <Route path="/register" element={<Register/>}/>
           <Route path="/stats" element={<Stats/>}/>
           <Route path="/*all" element={<NotFound/>}/>
