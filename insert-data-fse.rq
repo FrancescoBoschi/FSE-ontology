@@ -10,10 +10,10 @@ PREFIX api: <http://purl.org/linked-data/api/vocab#>
 PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 INSERT DATA {
-    GRAPH <http://fse.ontology/> {
+    GRAPH <https://fse.ontology/> {
         # PATIENTS
         <#pfiorentino>
-            a fse:patient ;  
+            a fse:patient ;
             foaf:firstName "Priscilla" ;
             foaf:lastName "Fiorentino" ;
             foaf:birthday "11/11/1956" .
@@ -34,11 +34,11 @@ INSERT DATA {
             a fse:patient ;
             foaf:firstName "Furio" ;
             foaf:lastName "Pisano" ;
-            foaf:birthday "29/07/1997" . 
+            foaf:birthday "29/07/1997" .
 
         # HEALTH WORKERS
         <#clucchese>
-            a fse:healthWorker ;  
+            a fse:healthWorker ;
             foaf:firstName "Cosimo" ;
             foaf:lastName "Lucchese" ;
             foaf:birthday "16/08/1963" .
@@ -60,7 +60,7 @@ INSERT DATA {
             a fse:doctor ;
             foaf:firstName "Ambrosino" ;
             foaf:lastName "Arcuri" ;
-            foaf:birthday "17/07/1966" .  
+            foaf:birthday "17/07/1966" .
 
         # NURSES
         <#alorenzo>
@@ -95,7 +95,7 @@ INSERT DATA {
 
         <#ufficioabarese>
             a fse:healthcareFacility ;
-            org:siteAddress "Via Cervese, 1 - Forlì" .                
+            org:siteAddress "Via Cervese, 1 - Forlì" .
 
         # RELATIONSHIP - HAS FAMILY DOCTOR
         <tag:stardog:api:#pfiorentino> fse:hasFamilyDoctor <tag:stardog:api:#abarese> .
@@ -108,12 +108,12 @@ INSERT DATA {
 
         <tag:stardog:api:#alorenzo> fse:belongsTo <tag:stardog:api:#auslromagna> .
 
-        <tag:stardog:api:#acocci> fse:belongsTo <tag:stardog:api:#auslromagna> .      
+        <tag:stardog:api:#acocci> fse:belongsTo <tag:stardog:api:#auslromagna> .
 
         <tag:stardog:api:#auslromagna> org:hasSite <tag:stardog:api:#sedeauslfc> .
 
         <tag:stardog:api:#auslromagna> org:hasSite <tag:stardog:api:#ospedalembufalini> .
 
-        <tag:stardog:api:#ordinemedicifc> org:hasSite <tag:stardog:api:#ufficioabarese> .        
+        <tag:stardog:api:#ordinemedicifc> org:hasSite <tag:stardog:api:#ufficioabarese> .
     }
-} 
+}
