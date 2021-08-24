@@ -1,16 +1,16 @@
-PREFIX or: <http://openresearch.org/vocab/>
-PREFIX tag: <http://www.holygoat.co.uk/owl/redwood/0.1/tags/>
-PREFIX api: <http://purl.org/linked-data/api/vocab#>
-PREFIX tag: <http://www.holygoat.co.uk/owl/redwood/0.1/tags/>
-PREFIX api: <http://purl.org/linked-data/api/vocab#>
-PREFIX tag: <http://www.holygoat.co.uk/owl/redwood/0.1/tags/>
-PREFIX api: <http://purl.org/linked-data/api/vocab#>
 PREFIX tag: <http://www.holygoat.co.uk/owl/redwood/0.1/tags/>
 PREFIX api: <http://purl.org/linked-data/api/vocab#>
 PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
 INSERT DATA {
     GRAPH <https://fse.ontology/> {
+        # CLINICAL DOCUMENTS
+        <#rad_pfiorentino>
+            a fse:radiologyReport .    
+        # DEVICES 
+        <#ultron>
+            a fse:device .
         # PATIENTS
         <#pfiorentino>
             a fse:patient ;
@@ -115,5 +115,14 @@ INSERT DATA {
         <tag:stardog:api:#auslromagna> org:hasSite <tag:stardog:api:#ospedalembufalini> .
 
         <tag:stardog:api:#ordinemedicifc> org:hasSite <tag:stardog:api:#ufficioabarese> .
+
+        <tag:stardog:api:#ultron> fse:hasIdentifier "ultron" .
+
+        <tag:stardog:api:#rad_pfiorentino> fse:body "Referto di radiologia anca paziente P. Fiorentino" .
+        <tag:stardog:api:#rad_pfiorentino> fse:languageCode "it-IT" .
+        <tag:stardog:api:#rad_pfiorentino> fse:realmCode "IT" .
+        <tag:stardog:api:#rad_pfiorentino> fse:versionNumber 1 .
+        <tag:stardog:api:#rad_pfiorentino> fse:confidentialyCode "N" .
+
     }
 }
