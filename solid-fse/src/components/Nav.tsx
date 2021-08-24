@@ -30,9 +30,7 @@ const SearchBar: Component = () => {
   )
 }
 
-const navLink = `
-  text-lg text-white no-underline
-`
+const navLink = "text-lg text-white no-underline"
 
 const Nav: Component = () => (
   <div class="container max-w-4xl flex items-center gap-6 p-6">

@@ -8,7 +8,10 @@ const PatientCard: Component<{ patient: Patient }> = (props) => {
   const avatarLetter = createMemo(() => props.patient.name[0].toUpperCase())
 
   return (
-    <Link href={`/patients/${props.patient.name}`} class="no-underline flex items-center gap-6 rounded-full hover:bg-gray-700">
+    <Link
+      href={`/patients/${props.patient.name}`}
+      class="no-underline flex items-center gap-6 rounded-full hover:bg-gray-700 transition-colors"
+    >
       <div class="
         avatar
         w-12 h-12 rounded-full
