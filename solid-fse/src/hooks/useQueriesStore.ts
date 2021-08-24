@@ -4,8 +4,19 @@ import { StardogQueryOptions, StardogQueryResult } from "../models/Stardog"
 import createStardogQuery from "./createStardogQuery"
 
 const [queries, setQueries] = createSignal<Query[]>([
-  { name: "Query 1", code: "" },
-  { name: "Query 2", code: "" }
+  {
+    name: "Lista pazienti",
+    code: `
+      SELECT ?ID ?Nome ?Cognome ?Data_di_Nascita
+      FROM <https://fse.ontology/>
+      WHERE {
+        ?ID rdf:type fse:patient .
+        ?ID foaf:firstName ?Nome .
+        ?ID foaf:lastName ?Cognome .
+        ?ID foaf:birthday ?Data_di_Nascita .
+      }
+    `
+  }
 ])
 
 const [queryCode, setQueryCode] = createSignal("")
@@ -16,16 +27,6 @@ const runQuery = async (code: string, options: Partial<StardogQueryOptions> = {}
   const query = createStardogQuery(code, options)
   const res = await query.execute()
   setQueryResult(res)
-  console.log(res)
-
-  const fields = res.head.vars
-  const records = res.results.bindings
-  console.log(fields, records)
-  for (const record of records) {
-    for (const field of fields) {
-      console.log(record[field].value)
-    }
-  }
 }
 
 export default () => ({

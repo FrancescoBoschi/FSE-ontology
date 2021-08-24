@@ -20,7 +20,7 @@ const QueryCard: Component<{ query: Query }> = (props) => {
         <button
           class="btn"
           title="Esegui"
-          onClick={() => runQuery(props.query)}
+          onClick={() => runQuery(props.query.code)}
         ><i class="mdi mdi-play"></i></button>
       </div>
     </div>

@@ -17,7 +17,7 @@ const QueryResult: Component = () => {
           <thead>
             <tr class="text-left border-b-2 bg-gray-700 border-gray-600">
               <For each={queryFields()}>{ (field) =>
-                <th class="px-3 py-2">{field}</th>
+                <th class="px-3 py-2">{field.replaceAll("_", " ")}</th>
               }</For>
             </tr>
           </thead>
