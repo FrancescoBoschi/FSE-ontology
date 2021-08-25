@@ -9,10 +9,19 @@ INSERT DATA {
         <#rad_pfiorentino>
             a fse:radiologyReport .
         <#lab_bcosta> 
-            a fse:laboratoryMedicineReport .       
+            a fse:laboratoryMedicineReport .
+        <#vps_bcosta> 
+            a fse:firstAidReport . 
+        <#rsa_drossi>
+            a fse:outpatientSpecialistReport ;
+            fse:hasSpecialistReportType "Ortopedia" .   
         # DEVICES 
         <#ultron>
             a fse:device .
+        # VEHICLES
+        <#plate_ca128td>
+            a fse:vehicle ;
+            fse:plate "CA128TD" .        
         # PATIENTS
         <#pfiorentino>
             a fse:patient ;
@@ -21,7 +30,13 @@ INSERT DATA {
             foaf:birthday "11/11/1956" ;
             fse:fiscalCode "FRNPSC56S51F839H" ;
             fse:healthCardNumber "80380800301569845351" .
-
+        <#drossi>
+            a fse:patient ;
+            foaf:firstName "Diana" ;
+            foaf:lastName "Rossi" ;
+            foaf:birthday "05/03/1948" ;
+            fse:fiscalCode "RSSDNI48C45C573H" ;
+            fse:healthCardNumber "80380800308945237892" .    
         <#bcosta>
             a fse:patient ;
             foaf:firstName "Bruna" ;
@@ -141,5 +156,17 @@ INSERT DATA {
         <tag:stardog:api:#lab_bcosta> fse:confidentialyCode "N" .
         <tag:stardog:api:#lab_bcosta> fse:hasType <https://loinc.org/document-ontology/18717-9> .
 
+        <tag:stardog:api:#vps_bcosta> fse:body "Referto di primo soccorso paziente B. Costa" .
+        <tag:stardog:api:#vps_bcosta> fse:languageCode "it-IT" .
+        <tag:stardog:api:#vps_bcosta> fse:realmCode "IT" .
+        <tag:stardog:api:#vps_bcosta> fse:versionNumber 1 .
+        <tag:stardog:api:#vps_bcosta> fse:confidentialyCode "N" .
+        <tag:stardog:api:#vps_bcosta> fse:cameWith <tag:stardog:api:#plate_ca128td> .
+
+        <tag:stardog:api:#rsa_drossi> fse:body "Documento di ricovero in struttura RSA paziente D. Rossi" .
+        <tag:stardog:api:#rsa_drossi> fse:languageCode "it-IT" .
+        <tag:stardog:api:#rsa_drossi> fse:realmCode "IT" .
+        <tag:stardog:api:#rsa_drossi> fse:versionNumber 1 .
+        <tag:stardog:api:#rsa_drossi> fse:confidentialyCode "N" .
     }
 }
