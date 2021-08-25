@@ -6,8 +6,7 @@ import PatientDocs from "../components/PatientDocs"
 
 const PatientPage: Component = () => {
   const params = useParams()
-
-  const patient = usePatientStore(params.name)
+  const patient = usePatientStore(params.fiscalCode)
 
   return (
     <Switch fallback={

@@ -11,7 +11,7 @@ const PatientCard: Component<{ patient: Patient }> = (props) => {
 
   return (
     <Link
-      href={`/patients/${props.patient.name}`}
+      href={`/patients/${props.patient.fiscalCode}`}
       class="no-underline flex items-center gap-6 rounded-full hover:bg-gray-700 transition-colors"
     >
       <div class="

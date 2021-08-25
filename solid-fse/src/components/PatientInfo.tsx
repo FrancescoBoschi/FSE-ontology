@@ -1,4 +1,4 @@
-import { Component, createMemo } from "solid-js"
+import { Component, createMemo, Show } from "solid-js"
 import { PatientDetails } from "../models/Patient"
 
 const PatientInfo: Component<{ patient: PatientDetails }> = (props) => {
@@ -28,10 +28,6 @@ const PatientInfo: Component<{ patient: PatientDetails }> = (props) => {
         <p>{props.patient.birthDate}</p>
       </div>
       <div class="mb-4">
-        <p class="uppercase font-bold text-xs text-gray-400 mb-1">Medico di famiglia</p>
-        <p>{props.patient.familyDoctor}</p>
-      </div>
-      <div class="mb-4">
         <p class="uppercase font-bold text-xs text-gray-400 mb-1">Codice fiscale</p>
         <p>{props.patient.fiscalCode}</p>
       </div>
@@ -39,6 +35,12 @@ const PatientInfo: Component<{ patient: PatientDetails }> = (props) => {
         <p class="uppercase font-bold text-xs text-gray-400 mb-1">Tessera sanitaria</p>
         <p>{props.patient.healthCardNumber}</p>
       </div>
+      <Show when={props.patient.familyDoctor != undefined}>
+        <div class="mb-4">
+          <p class="uppercase font-bold text-xs text-gray-400 mb-1">Medico di famiglia</p>
+          <p>{props.patient.familyDoctor}</p>
+        </div>
+      </Show>
 
     </div>
   )

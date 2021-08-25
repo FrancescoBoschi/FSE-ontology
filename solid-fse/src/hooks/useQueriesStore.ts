@@ -7,13 +7,22 @@ const [queries, setQueries] = createSignal<Query[]>([
   {
     name: "Lista pazienti",
     code: `
-      SELECT ?ID ?Nome ?Cognome ?Data_di_Nascita
+      SELECT ?ID ?Nome ?Cognome ?Data_di_Nascita ?Codice_Fiscale ?Tessera_Sanitaria ?Nome_Medico ?Cognome_Medico
       FROM <https://fse.ontology/>
       WHERE {
-        ?ID rdf:type fse:patient .
-        ?ID foaf:firstName ?Nome .
-        ?ID foaf:lastName ?Cognome .
-        ?ID foaf:birthday ?Data_di_Nascita .
+        ?ID
+          rdf:type fse:patient ;
+          foaf:firstName ?Nome ;
+          foaf:lastName ?Cognome ;
+          foaf:birthday ?Data_di_Nascita ;
+          fse:fiscalCode ?Codice_Fiscale .
+        OPTIONAL { ?ID fse:healthCardNumber ?Tessera_Sanitaria }
+        OPTIONAL {
+          ?ID fse:hasFamilyDoctor ?Medico_di_Famiglia .
+          ?Medico_di_Famiglia
+            foaf:firstName ?Nome_Medico ;
+            foaf:lastName ?Cognome_Medico .
+        }
       }
     `
   }

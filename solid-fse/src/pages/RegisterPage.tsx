@@ -30,8 +30,8 @@ const RegisterPage: Component = () => {
                   foaf:firstName "${name()}" ;
                   foaf:lastName "${surname()}" ;
                   foaf:birthday "${birthDate()}" ;
-                  foaf:fiscalCode "${fiscalCode()}" ;
-                  foaf:healthCardNumber "${healthCardNumber()}" .
+                  fse:fiscalCode "${fiscalCode()}" ;
+                  fse:healthCardNumber "${healthCardNumber()}" .
             }
         }
       `)
