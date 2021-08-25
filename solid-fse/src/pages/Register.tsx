@@ -1,4 +1,5 @@
-import { Component, createMemo, createSignal } from "solid-js"
+import { batch, Component, createMemo, createSignal } from "solid-js"
+import createStardogQuery from "../hooks/createStardogQuery"
 
 const Register: Component = () => {
 
@@ -16,35 +17,39 @@ const Register: Component = () => {
     healthCardNumber() != ""
   )
 
-  const onSubmit = (e: Event) => {
+  const onSubmit = async (e: Event) => {
     e.preventDefault()
-    console.log(`Register patient with:\nName ${name()}\nSurname ${surname()}\nBirth date ${birthDate()}`)
-    const query = `
-      PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-      INSERT DATA {
-          GRAPH <https://fse.ontology/> {
-              # PATIENTS
-              <#${fiscalCode()}>
+    try {
+      const query = createStardogQuery(`
+        PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+        INSERT DATA {
+            GRAPH <https://fse.ontology/> {
+                # PATIENTS
+                <#${fiscalCode()}>
                   a fse:patient ;
                   foaf:firstName "${name()}" ;
                   foaf:lastName "${surname()}" ;
                   foaf:birthday "${birthDate()}" ;
                   foaf:fiscalCode "${fiscalCode()}" ;
                   foaf:healthCardNumber "${healthCardNumber()}" .
-          }
-      }
-    `
-    console.log(query)
-    resetForm()
+            }
+        }
+      `)
+      await query.execute()
+      resetForm()
+      alert(`Paziente ${name()} ${surname()} registrato con successo.`)
+    } catch {
+      alert("Si è verificato un errore.")
+    }
   }
 
-  const resetForm = () => {
+  const resetForm = () => batch(() => {
     setName("")
     setSurname("")
     setBirthDate("")
     setFiscalCode("")
     setHealthCardNumber("")
-  }
+  })
 
   return (
     <form class="flex flex-col gap-6" onSubmit={onSubmit}>

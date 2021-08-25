@@ -20,9 +20,9 @@ const PatientCard: Component<{ patient: Patient }> = (props) => {
         text-lg font-semibold
       ">{avatarLetter}</div>
       <div class="info flex-grow">
-        <p>{props.patient.name}</p>
+        <p>{props.patient.name} {props.patient.surname}</p>
       </div>
-      <p class="birth text-gray-400 mr-4">01/01/2000</p>
+      <p class="birth text-gray-400 mr-4">{props.patient.birthDate}</p>
     </Link>
   )
 }
