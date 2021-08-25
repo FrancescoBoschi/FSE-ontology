@@ -7,7 +7,9 @@ INSERT DATA {
     GRAPH <https://fse.ontology/> {
         # CLINICAL DOCUMENTS
         <#rad_pfiorentino>
-            a fse:radiologyReport .    
+            a fse:radiologyReport .
+        <#lab_bcosta> 
+            a fse:laboratoryMedicineReport .       
         # DEVICES 
         <#ultron>
             a fse:device .
@@ -16,25 +18,33 @@ INSERT DATA {
             a fse:patient ;
             foaf:firstName "Priscilla" ;
             foaf:lastName "Fiorentino" ;
-            foaf:birthday "11/11/1956" .
+            foaf:birthday "11/11/1956" ;
+            fse:fiscalCode "FRNPSC56S51F839H" ;
+            fse:healthCardNumber "80380800301569845351" .
 
         <#bcosta>
             a fse:patient ;
             foaf:firstName "Bruna" ;
             foaf:lastName "Costa" ;
-            foaf:birthday "22/06/1986" .
+            foaf:birthday "22/06/1986" ;
+            fse:fiscalCode "CSTBRN86H62G273H" ;
+            fse:healthCardNumber "80380800304875162594" .
 
         <#vpinto>
             a fse:patient ;
             foaf:firstName "Veronica" ;
             foaf:lastName "Pinto" ;
-            foaf:birthday "05/12/1983" .
+            foaf:birthday "05/12/1983" ;
+            fse:fiscalCode "VRNPNT83T45F205V" ;
+            fse:healthCardNumber "80380800301126596519" .
 
         <#fpisano>
             a fse:patient ;
             foaf:firstName "Furio" ;
             foaf:lastName "Pisano" ;
-            foaf:birthday "29/07/1997" .
+            foaf:birthday "29/07/1997" ;
+            fse:fiscalCode "PSNFRU97L29G702B" ;
+            fse:healthCardNumber "803808003099956423156" .
 
         # HEALTH WORKERS
         <#clucchese>
@@ -123,6 +133,13 @@ INSERT DATA {
         <tag:stardog:api:#rad_pfiorentino> fse:realmCode "IT" .
         <tag:stardog:api:#rad_pfiorentino> fse:versionNumber 1 .
         <tag:stardog:api:#rad_pfiorentino> fse:confidentialyCode "N" .
+
+        <tag:stardog:api:#lab_bcosta> fse:body "Risultato esami del sangue di laboratorio paziente B. Costa" .
+        <tag:stardog:api:#lab_bcosta> fse:languageCode "it-IT" .
+        <tag:stardog:api:#lab_bcosta> fse:realmCode "IT" .
+        <tag:stardog:api:#lab_bcosta> fse:versionNumber 1 .
+        <tag:stardog:api:#lab_bcosta> fse:confidentialyCode "N" .
+        <tag:stardog:api:#lab_bcosta> fse:hasType <https://loinc.org/document-ontology/18717-9> .
 
     }
 }
