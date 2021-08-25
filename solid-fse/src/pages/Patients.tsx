@@ -21,7 +21,6 @@ const PatientCard: Component<{ patient: Patient }> = (props) => {
       ">{avatarLetter}</div>
       <div class="info flex-grow">
         <p>{props.patient.name}</p>
-        <p class="text-sm text-gray-400">Maschio</p>
       </div>
       <p class="birth text-gray-400 mr-4">01/01/2000</p>
     </Link>
