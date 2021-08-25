@@ -1,7 +1,7 @@
 import { batch, Component, createMemo, createSignal } from "solid-js"
 import createStardogQuery from "../hooks/createStardogQuery"
 
-const Register: Component = () => {
+const RegisterPage: Component = () => {
 
   const [name, setName] = createSignal("")
   const [surname, setSurname] = createSignal("")
@@ -112,4 +112,4 @@ const Register: Component = () => {
   )
 }
 
-export default Register
+export default RegisterPage

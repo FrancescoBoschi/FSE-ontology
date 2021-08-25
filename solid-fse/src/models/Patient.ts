@@ -7,6 +7,7 @@ export interface Patient extends Person {
   healthCardNumber: string
   email: string
   phone: string
+  familyDoctor: string
 }
 
 export interface PatientDetails extends Patient {

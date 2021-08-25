@@ -4,15 +4,19 @@ import { PatientDetails } from "../models/Patient"
 type PatientFetcher = (name: string) => Promise<PatientDetails>
 const fetchPatient: PatientFetcher = async (name: string) => {
   return {
-    name,
+    name: "Mario",
     surname: "Rossi",
-    email: `${name}.rossi@gmail.com`,
+    birthDate: "01/01/1990",
+    fiscalCode: "RSSMRO62B25E205Y",
+    healthCardNumber: "80380800301234567890",
+    email: "mario.rossi@gmail.com",
     phone: "+39 123 456 7890",
+    familyDoctor: "Gregory House",
     clinicalDocuments: [
       {
         id: "0",
         documentType: "PSS",
-        timestamp: new Date(),
+        timestamp: "01/01/2021",
         confidentialityCode: "CC",
         realmCode: "RC",
         version: "1.0",
@@ -22,7 +26,7 @@ const fetchPatient: PatientFetcher = async (name: string) => {
       {
         id: "1",
         documentType: "PSS",
-        timestamp: new Date(),
+        timestamp: "01/01/2021",
         confidentialityCode: "CC",
         realmCode: "RC",
         version: "1.0",

@@ -27,7 +27,7 @@ const QueryCard: Component<{ query: Query }> = (props) => {
   )
 }
 
-const Queries: Component = () => {
+const QueriesPage: Component = () => {
   const { queries, runQuery } = useQueriesStore()
   return (
     <div class="flex flex-col gap-6">
@@ -41,4 +41,4 @@ const Queries: Component = () => {
   )
 }
 
-export default Queries
+export default QueriesPage

@@ -3,7 +3,7 @@ import { Person } from "./Person";
 export interface ClinicalDocument {
   id: string
   documentType: string
-  timestamp: Date
+  timestamp: string
   version: string
   realmCode: string
   confidentialityCode: string

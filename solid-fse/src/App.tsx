@@ -2,11 +2,11 @@ import { Component, lazy } from "solid-js"
 import { Routes, Route } from "solid-app-router"
 import Nav from "./components/Nav"
 
-const Patients = lazy(() => import("./pages/Patients"))
-const Patient = lazy(() => import("./pages/Patient"))
-const Register = lazy(() => import("./pages/Register"))
-const Queries = lazy(() => import("./pages/Queries"))
-const NotFound = lazy(() => import("./pages/NotFound"))
+const PatientsPage = lazy(() => import("./pages/PatientsPage"))
+const PatientPage = lazy(() => import("./pages/PatientPage"))
+const RegisterPage = lazy(() => import("./pages/RegisterPage"))
+const QueriesPage = lazy(() => import("./pages/QueriesPage"))
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage"))
 
 const App: Component = () => {
   return (
@@ -14,11 +14,11 @@ const App: Component = () => {
       <Nav/>
       <div class="container max-w-4xl flex-grow p-6">
         <Routes>
-          <Route path="/" element={<Patients/>}/>
-          <Route path="/patients/:name" element={<Patient/>}/>
-          <Route path="/register" element={<Register/>}/>
-          <Route path="/queries" element={<Queries/>}/>
-          <Route path="/*all" element={<NotFound/>}/>
+          <Route path="/" element={<PatientsPage/>}/>
+          <Route path="/patients/:name" element={<PatientPage/>}/>
+          <Route path="/register" element={<RegisterPage/>}/>
+          <Route path="/queries" element={<QueriesPage/>}/>
+          <Route path="/*all" element={<NotFoundPage/>}/>
         </Routes>
       </div>
     </>

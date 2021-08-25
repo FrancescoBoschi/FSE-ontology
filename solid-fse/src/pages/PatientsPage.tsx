@@ -5,7 +5,9 @@ import useSearch from "../hooks/useSearch"
 import { Patient } from "../models/Patient"
 
 const PatientCard: Component<{ patient: Patient }> = (props) => {
-  const avatarLetter = createMemo(() => props.patient.name[0].toUpperCase())
+  const avatarLetters = createMemo(
+    () => `${props.patient.name[0]}${props.patient.surname[0]}`.toUpperCase()
+  )
 
   return (
     <Link
@@ -16,9 +18,8 @@ const PatientCard: Component<{ patient: Patient }> = (props) => {
         avatar
         w-12 h-12 rounded-full
         flex justify-center items-center
-        bg-blue-400 text-gray-700
-        text-lg font-semibold
-      ">{avatarLetter}</div>
+        bg-blue-400 text-gray-700 text-lg
+      ">{avatarLetters()}</div>
       <div class="info flex-grow">
         <p>{props.patient.name} {props.patient.surname}</p>
       </div>
@@ -27,7 +28,7 @@ const PatientCard: Component<{ patient: Patient }> = (props) => {
   )
 }
 
-const Patients: Component = () => {
+const PatientsPage: Component = () => {
 
   const { search } = useSearch()
 
@@ -54,4 +55,4 @@ const Patients: Component = () => {
   )
 }
 
-export default Patients
+export default PatientsPage

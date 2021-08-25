@@ -4,7 +4,7 @@ import usePatientStore from "../hooks/usePatientStore"
 import PatientInfo from "../components/PatientInfo"
 import PatientDocs from "../components/PatientDocs"
 
-const Patient: Component = () => {
+const PatientPage: Component = () => {
   const params = useParams()
 
   const patient = usePatientStore(params.name)
@@ -26,4 +26,4 @@ const Patient: Component = () => {
   )
 }
 
-export default Patient
+export default PatientPage
