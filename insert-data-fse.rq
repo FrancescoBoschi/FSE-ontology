@@ -1,3 +1,4 @@
+PREFIX obo: <http://purl.obolibrary.org/obo/>
 PREFIX tag: <http://www.holygoat.co.uk/owl/redwood/0.1/tags/>
 PREFIX api: <http://purl.org/linked-data/api/vocab#>
 PREFIX org: <http://www.w3.org/ns/org#>
@@ -14,7 +15,31 @@ INSERT DATA {
             a fse:firstAidReport . 
         <#rsa_drossi>
             a fse:outpatientSpecialistReport ;
-            fse:hasSpecialistReportType "Ortopedia" .   
+            fse:hasSpecialistReportType "Ortopedia" .
+        <#pps_vpinto>
+            a fse:summaryHealthProfile ;
+            fse:hasAllergy obo:DOID_0060532 ;
+            fse:hasAllergy obo:DOID_0080811 ;
+            fse:hasTherapy <tag:stardog:api:#antihistamine_vpinto> ;
+            fse:isOrganDonor "true" ;
+            fse:hasPregnancy <tag:stardog:api:#pregnancy_vpinto> ;
+            fse:hasMedicalNotes "Allergia staginale che si manifesta sottoforma di asma" .
+        <#ldo_fpisano>
+            a fse:hospitalDischargeLetter .
+        <#de_aesposito>
+            a fse:exemption .    
+        # PREGNANCIES 
+        <#pregnancy_vpinto>
+            a fse:pregnancy ;
+            fse:startedAt "2003-01-01" ;
+            fse:endedAt "2003-09-27" ;
+            fse:result "true" .     
+        # THERAPIES
+        <#antihistamine_vpinto>
+            a fse:therapy ;
+            fse:startDate "2021-09-24" ;
+            fse:dailyQuantity 1 ;
+            fse:hasMedicinal obo:DRON_00070584 .    
         # DEVICES 
         <#ultron>
             a fse:device .
@@ -44,7 +69,6 @@ INSERT DATA {
             foaf:birthday "22/06/1986" ;
             fse:fiscalCode "CSTBRN86H62G273H" ;
             fse:healthCardNumber "80380800304875162594" .
-
         <#vpinto>
             a fse:patient ;
             foaf:firstName "Veronica" ;
@@ -52,7 +76,6 @@ INSERT DATA {
             foaf:birthday "05/12/1983" ;
             fse:fiscalCode "VRNPNT83T45F205V" ;
             fse:healthCardNumber "80380800301126596519" .
-
         <#fpisano>
             a fse:patient ;
             foaf:firstName "Furio" ;
@@ -60,6 +83,13 @@ INSERT DATA {
             foaf:birthday "29/07/1997" ;
             fse:fiscalCode "PSNFRU97L29G702B" ;
             fse:healthCardNumber "803808003099956423156" .
+        <#aesposito>
+            a fse:patient ;
+            foaf:firstName "Anna Maria" ;
+            foaf:lastName "Esposito" ;
+            foaf:birthday "2/11/1960" ;
+            fse:fiscalCode "SPSNMR60S42F839P" ;
+            fse:healthCardNumber "803808003045876589452" .
 
         # HEALTH WORKERS
         <#clucchese>
@@ -168,5 +198,23 @@ INSERT DATA {
         <tag:stardog:api:#rsa_drossi> fse:realmCode "IT" .
         <tag:stardog:api:#rsa_drossi> fse:versionNumber 1 .
         <tag:stardog:api:#rsa_drossi> fse:confidentialyCode "N" .
+
+        <tag:stardog:api:#pps_vpinto> fse:body "Profilo Sanitario Sintetico paziente V. Pinto" .
+        <tag:stardog:api:#pps_vpinto> fse:languageCode "it-IT" .
+        <tag:stardog:api:#pps_vpinto> fse:realmCode "IT" .
+        <tag:stardog:api:#pps_vpinto> fse:versionNumber 1 .
+        <tag:stardog:api:#pps_vpinto> fse:confidentialyCode "N" .
+
+        <tag:stardog:api:#ldo_fpisano> fse:body "Documento di dimissione ospedaliera paziente F. Pisano" .
+        <tag:stardog:api:#ldo_fpisano> fse:languageCode "it-IT" .
+        <tag:stardog:api:#ldo_fpisano> fse:realmCode "IT" .
+        <tag:stardog:api:#ldo_fpisano> fse:versionNumber 1 .
+        <tag:stardog:api:#ldo_fpisano> fse:confidentialyCode "N" .
+
+        <tag:stardog:api:#de_aesposito> fse:body "Documento di esenzione paziente F. Pisano" .
+        <tag:stardog:api:#de_aesposito> fse:languageCode "it-IT" .
+        <tag:stardog:api:#de_aesposito> fse:realmCode "IT" .
+        <tag:stardog:api:#de_aesposito> fse:versionNumber 1 .
+        <tag:stardog:api:#de_aesposito> fse:confidentialyCode "N" .
     }
 }
