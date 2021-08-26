@@ -1,9 +1,8 @@
-import { createSignal } from "solid-js"
+import { createResource, createRoot, createSignal } from "solid-js"
 import { Query } from "../models/Query"
-import { StardogQueryOptions, StardogQueryResult } from "../models/Stardog"
 import createStardogQuery from "./createStardogQuery"
 
-const [queries, setQueries] = createSignal<Query[]>([
+const queries: Query[] = [
   {
     name: "Lista pazienti",
     code: `
@@ -25,21 +24,47 @@ const [queries, setQueries] = createSignal<Query[]>([
         }
       }
     `
+  },
+  {
+    name: "Lista documenti",
+    code: `
+      SELECT ?clinicalDocument ?body ?languageCode ?realmCode ?versionNumber
+      FROM <https://fse.ontology/>
+      WHERE {
+        ?clinicalDocument
+          rdf:type fse:clinicalDocument ;
+          fse:body ?body ;
+          fse:languageCode ?languageCode ;
+          fse:realmCode ?realmCode ;
+          fse:versionNumber ?versionNumber .
+      }
+    `,
+    options: { reasoning: true }
   }
-])
+]
 
-const [queryCode, setQueryCode] = createSignal("")
-const [queryResult, setQueryResult] = createSignal<StardogQueryResult | undefined>(undefined)
+const queriesStore = createRoot(() => {
+  // Query code string, used in CustomQuery
+  const [queryCode, setQueryCode] = createSignal("")
 
-const runQuery = async (code: string, options: Partial<StardogQueryOptions> = {}) => {
-  setQueryCode(queryCode)
-  const query = createStardogQuery(code, options)
-  const res = await query.execute()
-  setQueryResult(res)
-}
+  // Dynamic resource, refetches whenever currentQuery changes
+  const runQuery = async (query: Query) => {
+    if (query.code == "") return
+    const res = await createStardogQuery(query.code, query.options ?? {}).execute()
+    if (res?.head?.vars == undefined || res?.results?.bindings == undefined)
+      throw "Errore nell'esecuzione della query."
+    return res
+  }
+  const [currentQuery, setCurrentQuery] = createSignal<Query | undefined>(undefined)
+  const [queryResult] = createResource(currentQuery, runQuery)
 
-export default () => ({
-  queries,
-  queryCode, setQueryCode,
-  runQuery, queryResult
+  return {
+    queries,
+    queryCode, setQueryCode,
+    currentQuery,
+    runQuery: setCurrentQuery,
+    queryResult
+  }
 })
+
+export default () => queriesStore

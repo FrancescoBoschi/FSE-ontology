@@ -15,11 +15,11 @@ const PatientPage: Component = () => {
         <div class="w-3/4"><PatientDocs patient={patient()}/></div>
       </div>
     }>
-      <Match when={patient.loading}>
-        <p class="text-center">Loading...</p>
-      </Match>
       <Match when={patient.error}>
-        <p class="text-center">An error occurred.</p>
+        <p class="text-center">Si è verificato un errore.</p>
+      </Match>
+      <Match when={patient.loading}>
+        <p class="text-center">Caricamento...</p>
       </Match>
     </Switch>
   )

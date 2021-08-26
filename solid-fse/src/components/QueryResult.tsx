@@ -1,17 +1,14 @@
-import { Component, createMemo, For, Show } from "solid-js"
+import { Component, createMemo, For, Match, Switch } from "solid-js"
 import useQueriesStore from "../hooks/useQueriesStore"
 
 const QueryResult: Component = () => {
   const { queryResult } = useQueriesStore()
 
-  const queryFields = createMemo(() => queryResult()?.head.vars)
-  const queryRecords = createMemo(() => queryResult()?.results.bindings)
+  const queryFields = createMemo(() => queryResult()?.head?.vars)
+  const queryRecords = createMemo(() => queryResult()?.results?.bindings)
 
   return (
-    <Show
-      when={queryResult() != undefined}
-      fallback={<p class="text-center">I risultati delle query saranno mostrati qui.</p>}
-    >
+    <Switch fallback={
       <div class="overflow-auto border-2 rounded-lg border-gray-600">
         <table class="min-w-full">
           <thead>
@@ -32,7 +29,17 @@ const QueryResult: Component = () => {
           </tbody>
         </table>
       </div>
-    </Show>
+    }>
+      <Match when={queryResult.error}>
+        <p class="text-center">Si è verificato un errore.</p>
+      </Match>
+      <Match when={queryResult.loading}>
+        <p class="text-center">Caricamento...</p>
+      </Match>
+      <Match when={queryResult() == undefined}>
+        <p class="text-center">I risultati delle query saranno mostrati qui.</p>
+      </Match>
+    </Switch>
   )
 }
 
