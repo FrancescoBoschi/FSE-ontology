@@ -1,6 +1,5 @@
-import { Component, createMemo, For } from "solid-js"
+import { Component, createMemo, For, Match, Resource, Switch } from "solid-js"
 import { ClinicalDocument } from "../models/ClinicalDocument"
-import { PatientDetails } from "../models/Patient"
 
 const DocumentCard: Component<{ document: ClinicalDocument }> = (props) => {
   const document = createMemo(() => props.document)
@@ -14,7 +13,7 @@ const DocumentCard: Component<{ document: ClinicalDocument }> = (props) => {
         bg-blue-400 text-gray-700 text-2xl
       "><i class="mdi mdi-file-document-outline"></i></div>
       <div class="flex flex-col flex-grow">
-        <h2 class="text-xl mb-4">{document().documentType}</h2>
+        <h2 class="text-xl mb-4">{document().id}</h2>
         <div class="flex gap-4 text-sm text-gray-400">
           <p><i class="mdi mdi-key mr-2"></i>{document().id}</p>
           <p><i class="mdi mdi-account-circle mr-2"></i>Autore</p>
@@ -27,14 +26,23 @@ const DocumentCard: Component<{ document: ClinicalDocument }> = (props) => {
   )
 }
 
-const PatientDocs: Component<{ patient: PatientDetails }> = (props) => {
+const PatientDocs: Component<{ documents: Resource<ClinicalDocument[]> }> = (props) => {
   return (
-    <div class="flex flex-col gap-6">
-      <h1 class="text-3xl">Documenti</h1>
-      <For each={props.patient.clinicalDocuments}>{ document =>
-        <DocumentCard document={document}/>
-      }</For>
-    </div>
+    <Switch fallback={
+      <div class="flex flex-col gap-6">
+        <h1 class="text-3xl">Documenti</h1>
+        <For each={props.documents()}>{ document =>
+          <DocumentCard document={document}/>
+        }</For>
+      </div>
+    }>
+      <Match when={props.documents.error}>
+        <p class="text-center">Si è verificato un errore.</p>
+      </Match>
+      <Match when={props.documents.loading}>
+        <p class="text-center">Caricamento...</p>
+      </Match>
+    </Switch>
   )
 }
 

@@ -45,11 +45,11 @@ const PatientsPage: Component = () => {
         }</For>
       </div>
     }>
-      <Match when={patients.loading}>
-        <p class="text-center">Loading...</p>
-      </Match>
       <Match when={patients.error}>
-        <p class="text-center">An error occurred.</p>
+        <p class="text-center">Si è verificato un errore.</p>
+      </Match>
+      <Match when={patients.loading}>
+        <p class="text-center">Caricamento...</p>
       </Match>
     </Switch>
   )

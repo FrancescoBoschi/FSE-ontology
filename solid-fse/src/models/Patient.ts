@@ -9,7 +9,3 @@ export interface Patient extends Person {
   phone: string
   familyDoctor: string
 }
-
-export interface PatientDetails extends Patient {
-  clinicalDocuments: ClinicalDocument[]
-}

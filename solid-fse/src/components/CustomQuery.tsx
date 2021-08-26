@@ -31,7 +31,7 @@ const CustomQuery: Component = () => {
       <button
         class="btn mb-auto"
         title="Esegui"
-        onClick={() => runQuery(queryCode())}
+        onClick={() => runQuery({ name: "Custom query", code: queryCode() })}
       ><i class="mdi mdi-play"></i></button>
     </div>
   )

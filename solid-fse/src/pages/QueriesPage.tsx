@@ -20,7 +20,7 @@ const QueryCard: Component<{ query: Query }> = (props) => {
         <button
           class="btn"
           title="Esegui"
-          onClick={() => runQuery(props.query.code)}
+          onClick={() => runQuery(props.query)}
         ><i class="mdi mdi-play"></i></button>
       </div>
     </div>
@@ -28,11 +28,11 @@ const QueryCard: Component<{ query: Query }> = (props) => {
 }
 
 const QueriesPage: Component = () => {
-  const { queries, runQuery } = useQueriesStore()
+  const { queries } = useQueriesStore()
   return (
     <div class="flex flex-col gap-6">
       <div class="flex flex-col gap-6">
-        <For each={queries()}>{ query => <QueryCard query={query}/> }</For>
+        <For each={queries}>{ query => <QueryCard query={query}/> }</For>
       </div>
       <CustomQuery/>
       <div></div>
