@@ -6,16 +6,40 @@ PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 
 INSERT DATA {
     GRAPH <https://fse.ontology/> {
+        # -------------------------
         # CLINICAL DOCUMENTS
+        # -------------------------
         <#rad_pfiorentino>
-            a fse:radiologyReport .
+            a fse:radiologyReport ;
+            fse:body "Referto di radiologia anca paziente P. Fiorentino" ;
+            fse:languageCode "it-IT" ;
+            fse:realmCode "IT" ;
+            fse:versionNumber 1 ;
+            fse:confidentialyCode "N" .
         <#lab_bcosta> 
-            a fse:laboratoryMedicineReport .
+            a fse:laboratoryMedicineReport ;
+            fse:body "Risultato esami del sangue di laboratorio paziente B. Costa" ;
+            fse:languageCode "it-IT" ;
+            fse:realmCode "IT" ;
+            fse:versionNumber 1 ;
+            fse:confidentialyCode "N" ;
+            fse:hasType <https://loinc.org/document-ontology/18717-9> .
         <#vps_bcosta> 
-            a fse:firstAidReport . 
+            a fse:firstAidReport ;
+            fse:body "Referto di primo soccorso paziente B. Costa" ;
+            fse:languageCode "it-IT" ;
+            fse:realmCode "IT" ;
+            fse:versionNumber 1 ;
+            fse:confidentialyCode "N" ;
+            fse:cameWith <tag:stardog:api:#plate_ca128td> . 
         <#rsa_drossi>
             a fse:outpatientSpecialistReport ;
-            fse:hasSpecialistReportType "Ortopedia" .
+            fse:hasSpecialistReportType "Ortopedia" ;
+            fse:body "Documento di ricovero in struttura RSA paziente D. Rossi" ;
+            fse:languageCode "it-IT" ;
+            fse:realmCode "IT" ;
+            fse:versionNumber 1 ;
+            fse:confidentialyCode "N" .
         <#pps_vpinto>
             a fse:summaryHealthProfile ;
             fse:hasAllergy obo:DOID_0060532 ;
@@ -23,38 +47,84 @@ INSERT DATA {
             fse:hasTherapy <tag:stardog:api:#antihistamine_vpinto> ;
             fse:isOrganDonor "true" ;
             fse:hasPregnancy <tag:stardog:api:#pregnancy_vpinto> ;
-            fse:hasMedicalNotes "Allergia staginale che si manifesta sottoforma di asma" .
+            fse:hasMedicalNotes "Allergia staginale che si manifesta sottoforma di asma" ;
+            fse:body "Profilo Sanitario Sintetico paziente V; Pinto" ;
+            fse:languageCode "it-IT" ;
+            fse:realmCode "IT" ;
+            fse:versionNumber 1 ;
+            fse:confidentialyCode "N" .
         <#ldo_fpisano>
-            a fse:hospitalDischargeLetter .
+            a fse:hospitalDischargeLetter ;
+            fse:body "Documento di dimissione ospedaliera paziente F. Pisano" ;
+            fse:languageCode "it-IT" ;
+            fse:realmCode "IT" ;
+            fse:versionNumber 1 ;
+            fse:confidentialyCode "N" .
         <#de_aesposito>
-            a fse:exemption .    
-        # PREGNANCIES 
+            a fse:exemption ;
+            fse:body "Documento di esenzione paziente F. Pisano" ;
+            fse:languageCode "it-IT" ;
+            fse:realmCode "IT" ;
+            fse:versionNumber 1 ;
+            fse:confidentialyCode "N" .
+        <#prescription_acalabrese>    
+            a fse:prescription ;
+            fse:hasQuantity 2 ;
+            fse:for obo:DRON_00074479 ;
+            fse:body "Documento di prescrizione medica per Ventolin paziente A. Calabrese" ;
+            fse:languageCode "it-IT" ;
+            fse:realmCode "IT" ;
+            fse:versionNumber 1 ;
+            fse:confidentialyCode "N" .
+        <#vac_clori>
+            a fse:immunization ;
+            fse:validUntil "2031-05-04" ;
+            fse:prevents obo:DOID_11338 ;
+            fse:administration obo:DRON_00049059 ;
+            fse:body "Documento di avvenuta vaccinazione per Tetano paziente C. Clori" ;
+            fse:languageCode "it-IT" ;
+            fse:realmCode "IT" ;
+            fse:versionNumber 1 ;
+            fse:confidentialyCode "N" .        
+        # -------------------------
+        # PREGNANCIES
+        # -------------------------
         <#pregnancy_vpinto>
             a fse:pregnancy ;
             fse:startedAt "2003-01-01" ;
             fse:endedAt "2003-09-27" ;
             fse:result "true" .     
+        # -------------------------
         # THERAPIES
+        # -------------------------
         <#antihistamine_vpinto>
             a fse:therapy ;
             fse:startDate "2021-09-24" ;
             fse:dailyQuantity 1 ;
             fse:hasMedicinal obo:DRON_00070584 .    
-        # DEVICES 
+        # -------------------------
+        # DEVICES
+        # -------------------------
         <#ultron>
-            a fse:device .
+            a fse:device ;
+            fse:hasIdentifier "ultron" .
+        # -------------------------
         # VEHICLES
+        # -------------------------
         <#plate_ca128td>
             a fse:vehicle ;
             fse:plate "CA128TD" .        
+        # -------------------------
         # PATIENTS
+        # -------------------------
         <#pfiorentino>
             a fse:patient ;
             foaf:firstName "Priscilla" ;
             foaf:lastName "Fiorentino" ;
             foaf:birthday "11/11/1956" ;
             fse:fiscalCode "FRNPSC56S51F839H" ;
-            fse:healthCardNumber "80380800301569845351" .
+            fse:healthCardNumber "80380800301569845351" ;
+            fse:hasFamilyDoctor <tag:stardog:api:#abarese> .
         <#drossi>
             a fse:patient ;
             foaf:firstName "Diana" ;
@@ -68,7 +138,8 @@ INSERT DATA {
             foaf:lastName "Costa" ;
             foaf:birthday "22/06/1986" ;
             fse:fiscalCode "CSTBRN86H62G273H" ;
-            fse:healthCardNumber "80380800304875162594" .
+            fse:healthCardNumber "80380800304875162594" ;
+            fse:hasFamilyDoctor <tag:stardog:api:#abarese> .
         <#vpinto>
             a fse:patient ;
             foaf:firstName "Veronica" ;
@@ -87,50 +158,70 @@ INSERT DATA {
             a fse:patient ;
             foaf:firstName "Anna Maria" ;
             foaf:lastName "Esposito" ;
-            foaf:birthday "2/11/1960" ;
+            foaf:birthday "02/11/1960" ;
             fse:fiscalCode "SPSNMR60S42F839P" ;
             fse:healthCardNumber "803808003045876589452" .
-
+        <#acalabresi>
+            a fse:patient ;
+            foaf:firstName "Adele" ;
+            foaf:lastName "Calabresi" ;
+            foaf:birthday "07/11/1993" ;
+            fse:fiscalCode "CLBDLA93S07D969X" ;
+            fse:healthCardNumber "803808003087512326896" .    
+        <#clori>
+            a fse:patient ;
+            foaf:firstName "Caio" ;
+            foaf:lastName "Lori" ;
+            foaf:birthday "04/03/1984" ;
+            fse:fiscalCode "LROCAI84C04G702E" ;
+            fse:healthCardNumber "803808003045852135897" .              
+        # -------------------------
         # HEALTH WORKERS
+        # -------------------------
         <#clucchese>
             a fse:healthWorker ;
             foaf:firstName "Cosimo" ;
             foaf:lastName "Lucchese" ;
             foaf:birthday "16/08/1963" .
-
         <#dtrentino>
             a fse:healthWorker ;
             foaf:firstName "Divo" ;
             foaf:lastName "Trentino" ;
             foaf:birthday "06/04/1993" .
-
+        # -------------------------
         # DOCTORS
+        # -------------------------
         <#abarese>
             a fse:doctor ;
             foaf:firstName "Antonia" ;
             foaf:lastName "Barese" ;
-            foaf:birthday "11/07/1977" .
-
+            foaf:birthday "11/07/1977" ;
+            fse:belongsTo <tag:stardog:api:#ordinemedicifc> .
         <#aarcuri>
             a fse:doctor ;
             foaf:firstName "Ambrosino" ;
             foaf:lastName "Arcuri" ;
-            foaf:birthday "17/07/1966" .
-
+            foaf:birthday "17/07/1966" ;
+            fse:belongsTo <tag:stardog:api:#ordinemedicifc> .
+        # -------------------------
         # NURSES
+        # -------------------------
         <#alorenzo>
             a fse:nurse ;
             foaf:firstName "Alfredina" ;
             foaf:lastName "Lorenzo" ;
-            foaf:birthday "18/01/1959" .
+            foaf:birthday "18/01/1959" ;
+            fse:belongsTo <tag:stardog:api:#auslromagna> .
 
         <#acocci>
             a fse:nurse ;
             foaf:firstName "Aldino" ;
             foaf:lastName "Cocci" ;
-            foaf:birthday "15/12/1988" .
-
+            foaf:birthday "15/12/1988" ;
+            fse:belongsTo <tag:stardog:api:#auslromagna> .
+        # -------------------------
         # HEALTH ORGANIZATIONS
+        # -------------------------
         <#ordinemedicifc>
             a fse:healthOrganization ;
             org:identifier "Ordine dei Medici Chirurghi e Odontoiatri della Provincia di Forlì-Cesena" .
@@ -138,83 +229,20 @@ INSERT DATA {
         <#auslromagna>
             a fse:healthOrganization ;
             org:identifier "Azienda Unità Sanitaria Locale della Romagna" .
-
+        # -------------------------
         # HEALTHCARE FACILITY
+        # -------------------------
         <#sedeauslfc>
             a fse:healthcareFacility ;
-            org:siteAddress "Via della Rocca, 19 - Forlì" .
-
+            org:siteAddress "Via della Rocca, 19 - Forlì" ;
+            org:hasSite <tag:stardog:api:#sedeauslfc> ;
+            org:hasSite <tag:stardog:api:#ospedalembufalini> .
         <#ospedalembufalini>
             a fse:healthcareFacility ;
             org:siteAddress "Viale Giovanni Ghirotti, 286 - Cesena" .
-
         <#ufficioabarese>
             a fse:healthcareFacility ;
-            org:siteAddress "Via Cervese, 1 - Forlì" .
-
-        # RELATIONSHIP - HAS FAMILY DOCTOR
-        <tag:stardog:api:#pfiorentino> fse:hasFamilyDoctor <tag:stardog:api:#abarese> .
-
-        <tag:stardog:api:#bcosta> fse:hasFamilyDoctor <tag:stardog:api:#abarese> .
-
-        <tag:stardog:api:#abarese> fse:belongsTo <tag:stardog:api:#ordinemedicifc> .
-
-        <tag:stardog:api:#aarcuri> fse:belongsTo <tag:stardog:api:#ordinemedicifc> .
-
-        <tag:stardog:api:#alorenzo> fse:belongsTo <tag:stardog:api:#auslromagna> .
-
-        <tag:stardog:api:#acocci> fse:belongsTo <tag:stardog:api:#auslromagna> .
-
-        <tag:stardog:api:#auslromagna> org:hasSite <tag:stardog:api:#sedeauslfc> .
-
-        <tag:stardog:api:#auslromagna> org:hasSite <tag:stardog:api:#ospedalembufalini> .
-
-        <tag:stardog:api:#ordinemedicifc> org:hasSite <tag:stardog:api:#ufficioabarese> .
-
-        <tag:stardog:api:#ultron> fse:hasIdentifier "ultron" .
-
-        <tag:stardog:api:#rad_pfiorentino> fse:body "Referto di radiologia anca paziente P. Fiorentino" .
-        <tag:stardog:api:#rad_pfiorentino> fse:languageCode "it-IT" .
-        <tag:stardog:api:#rad_pfiorentino> fse:realmCode "IT" .
-        <tag:stardog:api:#rad_pfiorentino> fse:versionNumber 1 .
-        <tag:stardog:api:#rad_pfiorentino> fse:confidentialyCode "N" .
-
-        <tag:stardog:api:#lab_bcosta> fse:body "Risultato esami del sangue di laboratorio paziente B. Costa" .
-        <tag:stardog:api:#lab_bcosta> fse:languageCode "it-IT" .
-        <tag:stardog:api:#lab_bcosta> fse:realmCode "IT" .
-        <tag:stardog:api:#lab_bcosta> fse:versionNumber 1 .
-        <tag:stardog:api:#lab_bcosta> fse:confidentialyCode "N" .
-        <tag:stardog:api:#lab_bcosta> fse:hasType <https://loinc.org/document-ontology/18717-9> .
-
-        <tag:stardog:api:#vps_bcosta> fse:body "Referto di primo soccorso paziente B. Costa" .
-        <tag:stardog:api:#vps_bcosta> fse:languageCode "it-IT" .
-        <tag:stardog:api:#vps_bcosta> fse:realmCode "IT" .
-        <tag:stardog:api:#vps_bcosta> fse:versionNumber 1 .
-        <tag:stardog:api:#vps_bcosta> fse:confidentialyCode "N" .
-        <tag:stardog:api:#vps_bcosta> fse:cameWith <tag:stardog:api:#plate_ca128td> .
-
-        <tag:stardog:api:#rsa_drossi> fse:body "Documento di ricovero in struttura RSA paziente D. Rossi" .
-        <tag:stardog:api:#rsa_drossi> fse:languageCode "it-IT" .
-        <tag:stardog:api:#rsa_drossi> fse:realmCode "IT" .
-        <tag:stardog:api:#rsa_drossi> fse:versionNumber 1 .
-        <tag:stardog:api:#rsa_drossi> fse:confidentialyCode "N" .
-
-        <tag:stardog:api:#pps_vpinto> fse:body "Profilo Sanitario Sintetico paziente V. Pinto" .
-        <tag:stardog:api:#pps_vpinto> fse:languageCode "it-IT" .
-        <tag:stardog:api:#pps_vpinto> fse:realmCode "IT" .
-        <tag:stardog:api:#pps_vpinto> fse:versionNumber 1 .
-        <tag:stardog:api:#pps_vpinto> fse:confidentialyCode "N" .
-
-        <tag:stardog:api:#ldo_fpisano> fse:body "Documento di dimissione ospedaliera paziente F. Pisano" .
-        <tag:stardog:api:#ldo_fpisano> fse:languageCode "it-IT" .
-        <tag:stardog:api:#ldo_fpisano> fse:realmCode "IT" .
-        <tag:stardog:api:#ldo_fpisano> fse:versionNumber 1 .
-        <tag:stardog:api:#ldo_fpisano> fse:confidentialyCode "N" .
-
-        <tag:stardog:api:#de_aesposito> fse:body "Documento di esenzione paziente F. Pisano" .
-        <tag:stardog:api:#de_aesposito> fse:languageCode "it-IT" .
-        <tag:stardog:api:#de_aesposito> fse:realmCode "IT" .
-        <tag:stardog:api:#de_aesposito> fse:versionNumber 1 .
-        <tag:stardog:api:#de_aesposito> fse:confidentialyCode "N" .
+            org:siteAddress "Via Cervese, 1 - Forlì" ;
+            org:hasSite <tag:stardog:api:#ufficioabarese> .
     }
 }
