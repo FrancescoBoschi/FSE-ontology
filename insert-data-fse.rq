@@ -15,7 +15,10 @@ INSERT DATA {
             fse:languageCode "it-IT" ;
             fse:realmCode "IT" ;
             fse:versionNumber 1 ;
-            fse:confidentialyCode "N" .
+            fse:confidentialyCode "N" ;
+            fse:refersTo <tag:stardog:api:#pfiorentino> ;
+            fse:hasHumanAuthor <tag:stardog:api:#abarese> ;
+            fse:hasCustodian <tag:stardog:api:#auslromagna> .
         <#lab_bcosta> 
             a fse:laboratoryMedicineReport ;
             fse:body "Risultato esami del sangue di laboratorio paziente B. Costa" ;
@@ -225,7 +228,6 @@ INSERT DATA {
         <#ordinemedicifc>
             a fse:healthOrganization ;
             org:identifier "Ordine dei Medici Chirurghi e Odontoiatri della Provincia di Forlì-Cesena" .
-
         <#auslromagna>
             a fse:healthOrganization ;
             org:identifier "Azienda Unità Sanitaria Locale della Romagna" .
