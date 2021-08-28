@@ -1,14 +1,56 @@
-@prefix : <http://api.stardog.com/> .
-@prefix stardog: <tag:stardog:api:> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix org: <http://www.w3.org/ns/org#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix fse: <https://fse.ontology/> .
+@prefix : <http://api.stardog.com/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix stardog: <tag:stardog:api:> .
+@prefix fse: <https://fse.ontology/> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
 @prefix loinc: <http://purl.bioontology.org/ontology/LNC/> .
+
+fse:patient a owl:Class ;
+    rdfs:label "patient" ;
+    rdfs:subClassOf foaf:Person ;
+    <tag:stardog:studio:label> "patient" .
+
+fse:healthWorker a owl:Class ;
+    rdfs:label "healthWorker" ;
+    rdfs:subClassOf foaf:Person ;
+    <tag:stardog:studio:label> "healthWorker" .
+
+fse:doctor a owl:Class ;
+    rdfs:label "doctor" ;
+    rdfs:subClassOf fse:healthWorker ;
+    <tag:stardog:studio:label> "doctor" .
+
+fse:nurse a owl:Class ;
+    rdfs:label "nurse" ;
+    rdfs:subClassOf fse:healthWorker ;
+    <tag:stardog:studio:label> "nurse" .
+
+fse:healthOrganization a owl:Class ;
+    rdfs:label "healthOrganization" ;
+    rdfs:subClassOf org:Organization ;
+    <tag:stardog:studio:label> "healthOrganization" .
+
+fse:healthcareFacility a owl:Class ;
+    rdfs:label "healthcareFacility" ;
+    rdfs:subClassOf org:Site ;
+    <tag:stardog:studio:label> "healthcareFacility" .
+
+fse:hasFamilyDoctor a owl:ObjectProperty ;
+    rdfs:label "hasFamilyDoctor" ;
+    rdfs:domain fse:patient ;
+    rdfs:range fse:doctor ;
+    <tag:stardog:studio:label> "hasFamilyDoctor" .
+
+fse:belongsTo a owl:ObjectProperty ;
+    rdfs:label "belongsTo" ;
+    rdfs:domain fse:healthWorker ;
+    rdfs:range fse:healthOrganization ;
+    <tag:stardog:studio:label> "belongsTo" .
 
 fse:clinicalDocument a owl:Class ;
     rdfs:comment "A generic clinical document." ;
@@ -107,30 +149,9 @@ fse:versionNumber a owl:DatatypeProperty ;
     rdfs:range xsd:decimal ;
     <tag:stardog:studio:label> "versionNumber" .
 
-fse:healthWorker a owl:Class ;
-    rdfs:label "healthWorker" ;
-    rdfs:subClassOf foaf:Person ;
-    <tag:stardog:studio:label> "healthWorker" .
-
 fse:device a owl:Class ;
     rdfs:label "device" ;
     <tag:stardog:studio:label> "device" .
-
-fse:patient a owl:Class ;
-    rdfs:label "patient" ;
-    rdfs:subClassOf foaf:Person ;
-    <tag:stardog:studio:label> "patient" .
-
-fse:doctor a owl:Class ;
-    rdfs:label "doctor" ;
-    rdfs:subClassOf fse:healthWorker ;
-    <tag:stardog:studio:label> "doctor" .
-
-fse:hasFamilyDoctor a owl:ObjectProperty ;
-    rdfs:label "hasFamilyDoctor" ;
-    rdfs:domain fse:patient ;
-    rdfs:range fse:doctor ;
-    <tag:stardog:studio:label> "hasFamilyDoctor" .
 
 fse:hasGuardian a owl:ObjectProperty ;
     rdfs:label "hasGuardian" ;
@@ -167,11 +188,6 @@ fse:hasPreviousVersion a owl:ObjectProperty ;
     rdfs:domain fse:clinicalDocument ;
     rdfs:range fse:clinicalDocument ;
     <tag:stardog:studio:label> "hasPreviousVersion" .
-
-fse:nurse a owl:Class ;
-    rdfs:label "nurse" ;
-    rdfs:subClassOf fse:healthWorker ;
-    <tag:stardog:studio:label> "nurse" .
 
 fse:prevents a owl:ObjectProperty ;
     rdfs:label "prevents" ;
@@ -309,27 +325,11 @@ fse:hasTherapy a owl:ObjectProperty ;
     rdfs:range fse:therapy ;
     <tag:stardog:studio:label> "hasTherapy" .
 
-fse:healthOrganization a owl:Class ;
-    rdfs:label "healthOrganization" ;
-    rdfs:subClassOf org:Organization ;
-    <tag:stardog:studio:label> "healthOrganization" .
-
-fse:belongsTo a owl:ObjectProperty ;
-    rdfs:label "belongsTo" ;
-    rdfs:domain fse:healthWorker ;
-    rdfs:range fse:healthOrganization ;
-    <tag:stardog:studio:label> "belongsTo" .
-
 fse:hasCustodian a owl:ObjectProperty ;
     rdfs:label "hasCustodian" ;
     rdfs:domain fse:clinicalDocument ;
     rdfs:range fse:healthOrganization ;
     <tag:stardog:studio:label> "hasCustodian" .
-
-fse:healthcareFacility a owl:Class ;
-    rdfs:label "healthcareFacility" ;
-    rdfs:subClassOf org:Site ;
-    <tag:stardog:studio:label> "healthcareFacility" .
 
 fse:worksIn a owl:ObjectProperty ;
     rdfs:label "worksIn" ;
@@ -380,86 +380,17 @@ fse:hasSpecialistReportType a owl:DatatypeProperty ;
     ] ;
     <tag:stardog:studio:label> "hasSpecialistReportType" .
 
-<tag:stardog:api:#pfiorentino> a fse:patient ;
-    foaf:firstName "Priscilla" ;
-    foaf:lastName "Fiorentino" ;
-    foaf:birthday "11/11/1956" ;
-    fse:hasFamilyDoctor <tag:stardog:api:#abarese> ;
-    fse:fiscalCode "FRNPSC56S51F839H" ;
-    fse:healthCardNumber "80380800301569845351" .
+fse:fiscalCode a owl:DatatypeProperty ;
+    rdfs:label "fiscalCode" ;
+    rdfs:domain fse:patient ;
+    rdfs:range xsd:string ;
+    <tag:stardog:studio:label> "fiscalCode" .
 
-<tag:stardog:api:#bcosta> a fse:patient ;
-    foaf:firstName "Bruna" ;
-    foaf:lastName "Costa" ;
-    foaf:birthday "22/06/1986" ;
-    fse:hasFamilyDoctor <tag:stardog:api:#abarese> ;
-    fse:fiscalCode "CSTBRN86H62G273H" ;
-    fse:healthCardNumber "80380800304875162594" .
-
-<tag:stardog:api:#vpinto> a fse:patient ;
-    foaf:firstName "Veronica" ;
-    foaf:lastName "Pinto" ;
-    foaf:birthday "05/12/1983" ;
-    fse:fiscalCode "VRNPNT83T45F205V" ;
-    fse:healthCardNumber "80380800301126596519" .
-
-<tag:stardog:api:#fpisano> a fse:patient ;
-    foaf:firstName "Furio" ;
-    foaf:lastName "Pisano" ;
-    foaf:birthday "29/07/1997" ;
-    fse:fiscalCode "PSNFRU97L29G702B" ;
-    fse:healthCardNumber "803808003099956423156" .
-
-<tag:stardog:api:#clucchese> a fse:healthWorker ;
-    foaf:firstName "Cosimo" ;
-    foaf:lastName "Lucchese" ;
-    foaf:birthday "16/08/1963" .
-
-<tag:stardog:api:#dtrentino> a fse:healthWorker ;
-    foaf:firstName "Divo" ;
-    foaf:lastName "Trentino" ;
-    foaf:birthday "06/04/1993" .
-
-<tag:stardog:api:#abarese> a fse:doctor ;
-    foaf:firstName "Antonia" ;
-    foaf:lastName "Barese" ;
-    foaf:birthday "11/07/1977" ;
-    fse:belongsTo <tag:stardog:api:#ordinemedicifc> .
-
-<tag:stardog:api:#aarcuri> a fse:doctor ;
-    foaf:firstName "Ambrosino" ;
-    foaf:lastName "Arcuri" ;
-    foaf:birthday "17/07/1966" ;
-    fse:belongsTo <tag:stardog:api:#ordinemedicifc> .
-
-<tag:stardog:api:#alorenzo> a fse:nurse ;
-    foaf:firstName "Alfredina" ;
-    foaf:lastName "Lorenzo" ;
-    foaf:birthday "18/01/1959" ;
-    fse:belongsTo <tag:stardog:api:#auslromagna> .
-
-<tag:stardog:api:#acocci> a fse:nurse ;
-    foaf:firstName "Aldino" ;
-    foaf:lastName "Cocci" ;
-    foaf:birthday "15/12/1988" ;
-    fse:belongsTo <tag:stardog:api:#auslromagna> .
-
-<tag:stardog:api:#ordinemedicifc> a fse:healthOrganization ;
-    org:identifier "Ordine dei Medici Chirurghi e Odontoiatri della Provincia di Forlì-Cesena" ;
-    org:hasSite <tag:stardog:api:#ufficioabarese> .
-
-<tag:stardog:api:#auslromagna> a fse:healthOrganization ;
-    org:identifier "Azienda Unità Sanitaria Locale della Romagna" ;
-    org:hasSite <tag:stardog:api:#sedeauslfc> , <tag:stardog:api:#ospedalembufalini> .
-
-<tag:stardog:api:#sedeauslfc> a fse:healthcareFacility ;
-    org:siteAddress "Via della Rocca, 19 - Forlì" .
-
-<tag:stardog:api:#ospedalembufalini> a fse:healthcareFacility ;
-    org:siteAddress "Viale Giovanni Ghirotti, 286 - Cesena" .
-
-<tag:stardog:api:#ufficioabarese> a fse:healthcareFacility ;
-    org:siteAddress "Via Cervese, 1 - Forlì" .
+fse:healthCardNumber a owl:DatatypeProperty ;
+    rdfs:label "healthCardNumber" ;
+    rdfs:domain fse:patient ;
+    rdfs:range xsd:string ;
+    <tag:stardog:studio:label> "healthCardNumber" .
 
 fse:hasHumanAuthor a owl:ObjectProperty ;
     rdfs:label "hasHumanAuthor" ;
@@ -473,45 +404,15 @@ fse:hasDeviceAuthor a owl:ObjectProperty ;
     rdfs:range fse:device ;
     <tag:stardog:studio:label> "hasDeviceAuthor" .
 
-[
-    a owl:Restriction ;
-    owl:onProperty fse:cameWith ;
-    owl:minCardinalityQ 0 ;
-    owl:maxCardinalityQ 1
-] .
-
 fse:hasIdentifier a owl:DatatypeProperty ;
     rdfs:label "hasIdentifier" ;
     rdfs:domain fse:device ;
     rdfs:range xsd:string ;
     <tag:stardog:studio:label> "hasIdentifier" .
 
-<tag:stardog:api:#ultron> a fse:device ;
-    fse:hasIdentifier "ultron" .
-
-<tag:stardog:api:#rad_pfiorentino> a fse:radiologyReport ;
-    fse:realmCode "IT" ;
-    fse:languageCode "it-IT" ;
-    fse:body "Referto di radiologia anca paziente P. Fiorentino" ;
-    fse:versionNumber 1 ;
-    fse:confidentialyCode "N" .
-
-<tag:stardog:api:#lab_bcosta> a fse:laboratoryMedicineReport ;
-    fse:realmCode "IT" ;
-    fse:languageCode "it-IT" ;
-    fse:body "Risultato esami del sangue di laboratorio paziente B. Costa" ;
-    fse:versionNumber 1 ;
-    fse:hasType <https://loinc.org/document-ontology/18717-9> ;
-    fse:confidentialyCode "N" .
-
-fse:fiscalCode a owl:DatatypeProperty ;
-    rdfs:label "fiscalCode" ;
-    rdfs:domain fse:patient ;
-    rdfs:range xsd:string ;
-    <tag:stardog:studio:label> "fiscalCode" .
-
-fse:healthCardNumber a owl:DatatypeProperty ;
-    rdfs:label "healthCardNumber" ;
-    rdfs:domain fse:patient ;
-    rdfs:range xsd:string ;
-    <tag:stardog:studio:label> "healthCardNumber" .
+[
+    a owl:Restriction ;
+    owl:onProperty fse:cameWith ;
+    owl:minCardinalityQ 0 ;
+    owl:maxCardinalityQ 1
+] .
