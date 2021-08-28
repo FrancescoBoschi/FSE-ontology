@@ -5,7 +5,9 @@ export interface ClinicalDocument {
   version: number
   languageCode: string
   realmCode: string
-  // confidentialityCode: string
-  // author: Person
+  confidentialityCode: string
   body: string
+  humanAuthor?: string
+  deviceAuthor?: string
+  organization?: string
 }
