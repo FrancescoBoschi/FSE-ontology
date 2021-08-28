@@ -29,10 +29,10 @@ const queries: Query[] = [
     name: "Lista documenti",
     code: `
       SELECT
-        ?id ?body ?languageCode ?realmCode ?version
+        ?id ?body ?languageCode ?realmCode ?confidentialityCode ?version
         (CONCAT(?patientName, " ", ?patientSurname) AS ?patient)
         (CONCAT(?authorName, " ", ?authorSurname) AS ?humanAuthor)
-        ?organization
+        ?deviceAuthor ?organization
       FROM <https://fse.ontology/>
       WHERE {
         ?id
@@ -41,18 +41,20 @@ const queries: Query[] = [
           fse:languageCode ?languageCode ;
           fse:realmCode ?realmCode ;
           fse:versionNumber ?version ;
-          #fse:confidentialyCode ?confidentialyCode.
-        OPTIONAL {
-          ?id fse:refersTo ?p .
-          ?p
-            foaf:firstName ?patientName ;
-            foaf:lastName ?patientSurname .
-        }
+          fse:confidentialityCode ?confidentialityCode ;
+          fse:refersTo ?p .
+        ?p
+          foaf:firstName ?patientName ;
+          foaf:lastName ?patientSurname .
         OPTIONAL {
           ?id fse:hasHumanAuthor ?ha .
           ?ha
             foaf:firstName ?authorName ;
             foaf:lastName ?authorSurname .
+        }
+        OPTIONAL {
+          ?id fse:hasDeviceAuthor ?da .
+          ?da fse:hasIdentifier ?deviceAuthor .
         }
         OPTIONAL {
           ?id fse:hasCustodian ?o .
