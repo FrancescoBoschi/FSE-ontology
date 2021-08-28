@@ -14,9 +14,10 @@ const DocumentCard: Component<{ document: ClinicalDocument }> = (props) => {
       "><i class="mdi mdi-file-document-outline"></i></div>
       <div class="flex flex-col flex-grow">
         <h2 class="text-xl mb-4">{document().id}</h2>
-        <div class="flex gap-4 text-sm text-gray-400">
+        <div class="flex flex-wrap gap-4 text-sm text-gray-400">
           <p><i class="mdi mdi-key mr-2"></i>{document().id}</p>
-          <p><i class="mdi mdi-account-circle mr-2"></i>Autore</p>
+          {document().humanAuthor && <p><i class="mdi mdi-account-circle mr-2"></i>{document().humanAuthor}</p>}
+          {document().organization && <p><i class="mdi mdi-domain mr-2"></i>{document().organization}</p>}
           <p><i class="mdi mdi-calendar mr-2"></i>01/01/2021</p>
         </div>
         <div class="divider my-4"></div>
@@ -41,6 +42,9 @@ const PatientDocs: Component<{ documents: Resource<ClinicalDocument[]> }> = (pro
       </Match>
       <Match when={props.documents.loading}>
         <p class="text-center">Caricamento...</p>
+      </Match>
+      <Match when={props.documents()?.length == 0}>
+        <p class="text-center">Nessun documento.</p>
       </Match>
     </Switch>
   )

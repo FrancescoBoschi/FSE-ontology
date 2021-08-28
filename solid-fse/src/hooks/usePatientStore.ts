@@ -33,7 +33,11 @@ const fetchPatient = async (fiscalCode: string) => {
 const fetchClinicalDocuments = async (fiscalCode: string) => {
   const query = createStardogQuery(
     `
-      SELECT ?id ?body ?languageCode ?realmCode ?version
+      SELECT
+        ?id ?body ?languageCode ?realmCode ?version
+        (CONCAT(?patientName, " ", ?patientSurname) AS ?patient)
+        (CONCAT(?authorName, " ", ?authorSurname) AS ?humanAuthor)
+        ?organization
       FROM <https://fse.ontology/>
       WHERE {
         ?id
@@ -41,7 +45,24 @@ const fetchClinicalDocuments = async (fiscalCode: string) => {
           fse:body ?body ;
           fse:languageCode ?languageCode ;
           fse:realmCode ?realmCode ;
-          fse:versionNumber ?version .
+          fse:versionNumber ?version ;
+          #fse:confidentialyCode ?confidentialyCode.
+        OPTIONAL {
+          ?id fse:refersTo ?p .
+          ?p
+            foaf:firstName ?patientName ;
+            foaf:lastName ?patientSurname .
+        }
+        OPTIONAL {
+          ?id fse:hasHumanAuthor ?ha .
+          ?ha
+            foaf:firstName ?authorName ;
+            foaf:lastName ?authorSurname .
+        }
+        OPTIONAL {
+          ?id fse:hasCustodian ?o .
+          ?o org:identifier ?organization .
+        }
       }
     `,
     { reasoning: true }
@@ -49,22 +70,6 @@ const fetchClinicalDocuments = async (fiscalCode: string) => {
   const res = (await query.execute()).results.bindings
   const documents = mapBindingsToValues(res)
   return documents as ClinicalDocument[]
-  /* return [
-    {
-      id: "0",
-      languageCode: "IT",
-      realmCode: "RC",
-      version: 1,
-      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam ut soluta ducimus veritatis expedita, et sunt voluptatem saepe nihil assumenda nulla. Ratione asperiores mollitia officiis placeat ipsa aut rem laudantium."
-    },
-    {
-      id: "1",
-      languageCode: "IT",
-      realmCode: "RC",
-      version: 1,
-      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam ut soluta ducimus veritatis expedita, et sunt voluptatem saepe nihil assumenda nulla. Ratione asperiores mollitia officiis placeat ipsa aut rem laudantium."
-    }
-  ] as ClinicalDocument[] */
 }
 
 const usePatientStore = (fiscalCode: string) => {
