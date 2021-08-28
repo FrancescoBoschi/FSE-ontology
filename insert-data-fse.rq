@@ -350,6 +350,18 @@ INSERT DATA {
             org:siteAddress "Piazza Giovine Italia, 1 - Gallarate" .
         <#rsamonsavano>
             a fse:healthcareFacility ;
-            org:siteAddress "Via Fortuna, 1 - San Francesco" .         
+            org:siteAddress "Via Fortuna, 1 - San Francesco" . 
+        # -------------------------
+        # LABORATORIES
+        # -------------------------  
+        <#lab_bianalisi>
+            a fse:laboratory ;
+            org:siteAddress "Via Maceri, 12 - Forlì" .
+        <#lab_pavese>
+            a fse:laboratory ;
+            org:siteAddress "Via Pavese, 410 - Roma" .
+        <#lab_synlab>
+            a fse:laboratory ;
+            org:siteAddress "Via Zuccherificio, 153 - Cesena" .              
     }
 }
