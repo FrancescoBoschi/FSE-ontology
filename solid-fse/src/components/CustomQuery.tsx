@@ -22,7 +22,7 @@ const CustomQuery: Component = () => {
     <div class="flex gap-2">
       <textarea
         ref={textArea}
-        class="input font-mono flex-grow min-h-[96px]"
+        class="input font-mono flex-grow min-h-[192px]"
         placeholder="Query personalizzata"
         value={queryCode()}
         onKeyUp={(e) => setQueryCode(e.currentTarget.value)}

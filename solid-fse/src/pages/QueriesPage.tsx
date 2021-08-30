@@ -16,6 +16,8 @@ const QueryCard: Component<{ query: Query }> = (props) => {
         bg-blue-400 text-gray-700 text-2xl
       "><i class="mdi mdi-file-search-outline"></i></div>
       <p class="flex-grow">{props.query.name}</p>
+      {props.query?.options?.reasoning &&
+        <p class="text-xs uppercase font-bold px-2 py-1 rounded text-gray-300 bg-gray-700">Reasoning</p>}
       <div class="flex gap-2">
         <button
           class="btn"

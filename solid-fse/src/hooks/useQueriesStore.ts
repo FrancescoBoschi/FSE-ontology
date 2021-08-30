@@ -1,11 +1,12 @@
 import { createResource, createRoot, createSignal } from "solid-js"
+import { outdent } from "outdent"
 import { Query } from "../models/Query"
 import createStardogQuery from "./createStardogQuery"
 
 const queries: Query[] = [
   {
     name: "Lista pazienti",
-    code: `
+    code: outdent`
       SELECT ?ID ?Nome ?Cognome ?Data_di_Nascita ?Codice_Fiscale ?Tessera_Sanitaria ?Nome_Medico ?Cognome_Medico
       FROM <https://fse.ontology/>
       WHERE {
@@ -27,43 +28,101 @@ const queries: Query[] = [
   },
   {
     name: "Lista documenti",
-    code: `
+    code: outdent`
       SELECT
-        ?id ?documentType ?body ?languageCode ?realmCode ?confidentialityCode ?version
-        (CONCAT(?patientName, " ", ?patientSurname) AS ?patient)
-        (CONCAT(?authorName, " ", ?authorSurname) AS ?humanAuthor)
-        ?deviceAuthor ?organization
+        ?ID ?Tipo_Documento ?Testo ?Lingua ?Paese ?Dominio ?Versione
+        (CONCAT(?patientName, " ", ?patientSurname) AS ?Paziente)
+        (CONCAT(?authorName, " ", ?authorSurname) AS ?Autore)
+        ?Dispositivo_Emittente ?Organizzazione
       FROM <https://fse.ontology/>
       WHERE {
-        ?documentType rdfs:subClassOf fse:clinicalDocument .
-        ?id
-          a ?documentType ;
-          fse:body ?body ;
-          fse:languageCode ?languageCode ;
-          fse:realmCode ?realmCode ;
-          fse:versionNumber ?version ;
-          fse:confidentialityCode ?confidentialityCode ;
+        ?Tipo_Documento rdfs:subClassOf fse:clinicalDocument .
+        ?ID
+          a ?Tipo_Documento ;
+          fse:body ?Testo ;
+          fse:languageCode ?Lingua ;
+          fse:realmCode ?Paese ;
+          fse:versionNumber ?Versione ;
+          fse:confidentialityCode ?Dominio ;
           fse:refersTo ?p .
         ?p
           foaf:firstName ?patientName ;
           foaf:lastName ?patientSurname .
         OPTIONAL {
-          ?id fse:hasHumanAuthor ?ha .
+          ?ID fse:hasHumanAuthor ?ha .
           ?ha
             foaf:firstName ?authorName ;
             foaf:lastName ?authorSurname .
         }
         OPTIONAL {
-          ?id fse:hasDeviceAuthor ?da .
-          ?da fse:hasIdentifier ?deviceAuthor .
+          ?ID fse:hasDeviceAuthor ?da .
+          ?da fse:hasIdentifier ?Dispositivo_Emittente .
         }
         OPTIONAL {
-          ?id fse:hasCustodian ?o .
-          ?o org:identifier ?organization .
+          ?ID fse:hasCustodian ?o .
+          ?o org:identifier ?Organizzazione .
         }
       }
     `
-  }
+  },
+  {
+    name: "Conteggio documenti per organizzazione",
+    code : outdent`
+      SELECT ?ID ?Nome_Organizzazione (COUNT(?document) AS ?Documenti)
+      FROM <https://fse.ontology/>
+      WHERE {
+        ?document fse:hasCustodian ?ID .
+        ?ID org:identifier ?Nome_Organizzazione .
+      }
+      GROUP BY ?ID ?Nome_Organizzazione
+    `
+  },
+  {
+    name: "Pazienti con vaccini scaduti",
+    code : outdent`
+      SELECT ?ID (CONCAT(?name, " ", ?surname) AS ?Paziente) ?Documento ?Valido_fino_a
+      FROM <https://fse.ontology/>
+      WHERE {
+        ?doc
+          a fse:immunization ;
+          fse:refersTo ?ID ;
+          fse:body ?Documento ;
+          fse:validUntil ?Valido_fino_a .
+        ?ID
+          foaf:firstName ?name ;
+          foaf:lastName ?surname .
+        FILTER(xsd:dateTime(?Valido_fino_a) < xsd:dateTime(NOW())) .
+      }
+    `,
+  },
+  {
+    name: "Percentuale di entrate in pronto soccorso con ambulanza",
+    code : outdent`
+      SELECT (100 * COUNT(?amb) / (COUNT(?id)) AS ?Percentuale)
+      FROM <https://fse.ontology/>
+      WHERE {
+        ?id
+          a fse:firstAidReport ;
+          fse:cameWith ?amb .
+      }
+    `,
+  },
+  {
+    name: "Elenco donatori di organi",
+    code : outdent`
+      SELECT ?ID ?Nome ?Cognome
+      FROM <https://fse.ontology/>
+      WHERE {
+        ?doc
+          a fse:summaryHealthProfile ;
+          fse:refersTo ?ID ;
+          fse:isOrganDonor "true" .
+        ?ID
+          foaf:firstName ?Nome ;
+          foaf:lastName ?Cognome .
+      }
+    `,
+  },
 ]
 
 const queriesStore = createRoot(() => {
@@ -73,6 +132,7 @@ const queriesStore = createRoot(() => {
   // Dynamic resource, refetches whenever currentQuery changes
   const runQuery = async (query: Query) => {
     if (query.code == "") return
+    setQueryCode(query.code)
     const res = await createStardogQuery(query.code, query.options ?? {}).execute()
     if (res?.head?.vars == undefined || res?.results?.bindings == undefined)
       throw "Errore nell'esecuzione della query."
