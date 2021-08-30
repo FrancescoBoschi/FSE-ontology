@@ -1,6 +1,6 @@
 export interface ClinicalDocument {
   id: string
-  // documentType: string
+  documentType: string
   // timestamp: string
   version: number
   languageCode: string

@@ -1,5 +1,6 @@
 import { Component, createMemo, For, Match, Resource, Switch } from "solid-js"
 import { ClinicalDocument } from "../models/ClinicalDocument"
+import formatDocumentType from "../utils/formatDocumentType"
 
 const DocumentCard: Component<{ document: ClinicalDocument }> = (props) => {
   const document = createMemo(() => props.document)
@@ -13,7 +14,7 @@ const DocumentCard: Component<{ document: ClinicalDocument }> = (props) => {
         bg-blue-400 text-gray-700 text-2xl
       "><i class="mdi mdi-file-document-outline"></i></div>
       <div class="flex flex-col flex-grow">
-        <h2 class="text-xl mb-4">{document().id}</h2>
+        <h2 class="text-xl mb-4">{formatDocumentType(document().documentType)}</h2>
         <div class="flex flex-wrap gap-4 text-sm text-gray-400">
           <p><i class="mdi mdi-key mr-2"></i>{document().id}</p>
           {document().humanAuthor && <p><i class="mdi mdi-account-circle mr-2"></i>{document().humanAuthor}</p>}

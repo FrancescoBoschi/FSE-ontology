@@ -8,7 +8,8 @@ const fetchPatients = async () => {
     SELECT ?id ?name ?surname ?birthDate ?fiscalCode
     FROM <https://fse.ontology/>
     WHERE {
-      ?id rdf:type fse:patient ;
+      ?id
+        a fse:patient ;
         foaf:firstName ?name ;
         foaf:lastName ?surname ;
         foaf:birthday ?birthDate ;

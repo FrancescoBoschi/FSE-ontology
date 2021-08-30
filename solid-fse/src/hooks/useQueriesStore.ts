@@ -10,7 +10,7 @@ const queries: Query[] = [
       FROM <https://fse.ontology/>
       WHERE {
         ?ID
-          rdf:type fse:patient ;
+          a fse:patient ;
           foaf:firstName ?Nome ;
           foaf:lastName ?Cognome ;
           foaf:birthday ?Data_di_Nascita ;
@@ -29,14 +29,15 @@ const queries: Query[] = [
     name: "Lista documenti",
     code: `
       SELECT
-        ?id ?body ?languageCode ?realmCode ?confidentialityCode ?version
+        ?id ?documentType ?body ?languageCode ?realmCode ?confidentialityCode ?version
         (CONCAT(?patientName, " ", ?patientSurname) AS ?patient)
         (CONCAT(?authorName, " ", ?authorSurname) AS ?humanAuthor)
         ?deviceAuthor ?organization
       FROM <https://fse.ontology/>
       WHERE {
+        ?documentType rdfs:subClassOf fse:clinicalDocument .
         ?id
-          rdf:type fse:clinicalDocument ;
+          a ?documentType ;
           fse:body ?body ;
           fse:languageCode ?languageCode ;
           fse:realmCode ?realmCode ;
@@ -61,8 +62,7 @@ const queries: Query[] = [
           ?o org:identifier ?organization .
         }
       }
-    `,
-    options: { reasoning: true }
+    `
   }
 ]
 
