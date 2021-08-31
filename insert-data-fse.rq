@@ -107,14 +107,14 @@ INSERT DATA {
             fse:hasDeviceAuthor <tag:stardog:api:#aifa_totem> ;
             fse:hasCustodian <tag:stardog:api:#aifa> ;  
             fse:createdAt "2021-05-09T16:00:12" .     
-        <#pps_vpinto>
+        <#pss_vpinto>
             a fse:summaryHealthProfile ;
-            fse:hasAllergy obo:DOID_0060532 ;
-            fse:hasAllergy obo:DOID_0080811 ;
-            fse:hasTherapy <tag:stardog:api:#antihistamine_vpinto> ;
-            fse:isOrganDonor "true" ;
-            fse:hasPregnancy <tag:stardog:api:#pregnancy_vpinto> ;
-            fse:hasMedicalNotes "Allergia staginale che si manifesta sottoforma di asma" ;
+            fse:includesAllergy obo:DOID_0060532 ;
+            fse:includesAllergy obo:DOID_0080811 ;
+            fse:includesTherapy <tag:stardog:api:#antihistamine_vpinto> ;
+            fse:includesOrganDonor "true" ;
+            fse:includesPregnancy <tag:stardog:api:#pregnancy_vpinto> ;
+            fse:includesMedicalNotes "Allergia stagionale che si manifesta sottoforma di asma" ;
             fse:body "Profilo Sanitario Sintetico paziente V. Pinto" ;
             fse:languageCode "it-IT" ;
             fse:realmCode "IT" ;
@@ -123,6 +123,7 @@ INSERT DATA {
             fse:refersTo <tag:stardog:api:#VRNPNT83T45F205V> ;
             fse:hasDeviceAuthor <tag:stardog:api:#ssn_totem> ;
             fse:hasCustodian <tag:stardog:api:#ssn> ;
+            fse:hasLatestVersion <tag:stardog:api:#pss_vpinto> ;
             fse:createdAt "2020-11-22T22:10:14" .
         <#ldo_fpisano>
             a fse:hospitalDischargeLetter ;
@@ -198,13 +199,13 @@ INSERT DATA {
             fse:hasDeviceAuthor <tag:stardog:api:#aifa_totem> ;
             fse:hasCustodian <tag:stardog:api:#aifa> ;
             fse:createdAt "2021-06-30T15:15:23" .
-        <#pps_acalabrese>
+        <#pss_acalabrese>
             a fse:summaryHealthProfile ;
-            fse:hasAllergy obo:DOID_10608 ;
-            fse:hasAllergy obo:DOID_0040001 ;
-            fse:hasTherapy <tag:stardog:api:#gastricacidity_acalabrese> ;
-            fse:isOrganDonor "true" ;
-            fse:hasMedicalNotes "Paziente ciliaco, allergia ai gamberi. Assume regolarmente medicianale per controllare l'acidità di stomaco." ;
+            fse:includesAllergy obo:DOID_10608 ;
+            fse:includesAllergy obo:DOID_0040001 ;
+            fse:includesTherapy <tag:stardog:api:#gastricacidity_acalabrese> ;
+            fse:includesOrganDonor "true" ;
+            fse:includesMedicalNotes "Paziente ciliaco, allergia ai gamberi. Assume regolarmente medicianale per controllare l'acidità di stomaco." ;
             fse:body "Profilo Sanitario Sintetico paziente A. Calabrese" ;
             fse:languageCode "it-IT" ;
             fse:realmCode "IT" ;
@@ -228,12 +229,12 @@ INSERT DATA {
             fse:hasDeviceAuthor <tag:stardog:api:#aifa_totem> ;
             fse:hasCustodian <tag:stardog:api:#aifa> ;
             fse:createdAt "2021-05-04T17:08:54" .
-        <#pps_clori>
+        <#pss_clori>
             a fse:summaryHealthProfile ;
-            fse:hasAllergy obo:DOID_0050133 ;
-            fse:hasTherapy <tag:stardog:api:#fugalinfectiontreatment_clori> ;
-            fse:isOrganDonor "false" ;
-            fse:hasMedicalNotes "Grave infezione da funghi che si manifesta con escoriazioni sulla pelle del paziente" ;
+            fse:includesAllergy obo:DOID_0050133 ;
+            fse:includesTherapy <tag:stardog:api:#fugalinfectiontreatment_clori> ;
+            fse:includesOrganDonor "false" ;
+            fse:includesMedicalNotes "Grave infezione da funghi che si manifesta con escoriazioni sulla pelle del paziente" ;
             fse:body "Profilo Sanitario Sintetico paziente C. Clori" ;
             fse:languageCode "it-IT" ;
             fse:realmCode "IT" ;

@@ -59,7 +59,7 @@ fse:clinicalDocument a owl:Class ;
     <tag:stardog:studio:label> "clinicalDocument" .
 
 fse:summaryHealthProfile a owl:Class ;
-    rdfs:comment "PPS" ;
+    rdfs:comment "PSS" ;
     rdfs:label "summaryHealthProfile" ;
     rdfs:subClassOf fse:clinicalDocument ;
     owl:disjointWith fse:firstAidReport , fse:outpatientSpecialistReport , fse:radiologyReport , fse:laboratoryMedicineReport , fse:hospitalDischargeLetter , fse:prescription , fse:exemption , fse:immunization ;
@@ -177,6 +177,11 @@ fse:refersTo a owl:ObjectProperty ;
     rdfs:range fse:patient ;
     <tag:stardog:studio:label> "refersTo" .
 
+fse:hasClinicalDocument a owl:ObjectProperty ;
+    rdfs:label "hasClinicalDocument" ;
+    owl:inverseOf fse:refersTo ;
+    <tag:stardog:studio:label> "hasClinicalDocument" .
+
 fse:createdAt a owl:DatatypeProperty ;
     rdfs:label "createdAt" ;
     rdfs:domain fse:clinicalDocument ;
@@ -188,6 +193,61 @@ fse:hasPreviousVersion a owl:ObjectProperty ;
     rdfs:domain fse:clinicalDocument ;
     rdfs:range fse:clinicalDocument ;
     <tag:stardog:studio:label> "hasPreviousVersion" .
+
+fse:hasLatestVersion a owl:ObjectProperty ;
+    rdfs:label "hasLatestVersion" ;
+    rdfs:domain fse:clinicalDocument ;
+    rdfs:range fse:clinicalDocument ;
+    <tag:stardog:studio:label> "hasLatestVersion" .
+
+fse:hasAllergy a owl:ObjectProperty ;
+    rdfs:label "hasAllergy" ;
+    rdfs:domain fse:patient ;
+    rdfs:range obo:DOID_1205 ;
+    <tag:stardog:studio:label> "hasAllergy" ;
+    owl:propertyChainAxiom ( fse:hasClinicalDocument fse:hasLatestVersion fse:includesAllergy ) .
+
+fse:hasPregnancy a owl:ObjectProperty ;
+    rdfs:label "hasPregnancy" ;
+    rdfs:domain fse:patient ;
+    rdfs:range obo:DOID_1205 ;
+    <tag:stardog:studio:label> "hasPregnancy" ;
+    owl:propertyChainAxiom ( fse:hasClinicalDocument fse:hasLatestVersion fse:includesPregnancy ) .
+
+fse:hasTherapy a owl:ObjectProperty ;
+    rdfs:label "hasTherapy" ;
+    rdfs:domain fse:patient ;
+    rdfs:range obo:DOID_1205 ;
+    <tag:stardog:studio:label> "hasTherapy" ;
+    owl:propertyChainAxiom ( fse:hasClinicalDocument fse:hasLatestVersion fse:includesTherapy ) .
+
+fse:hasDisease a owl:ObjectProperty ;
+    rdfs:label "hasDisease" ;
+    rdfs:domain fse:patient ;
+    rdfs:range obo:DOID_1205 ;
+    <tag:stardog:studio:label> "hasDisease" ;
+    owl:propertyChainAxiom ( fse:hasClinicalDocument fse:hasLatestVersion fse:includesDisease ) .
+
+fse:hasMedicalNotes a owl:ObjectProperty ;
+    rdfs:label "hasMedicalNotes" ;
+    rdfs:domain fse:patient ;
+    rdfs:range obo:DOID_1205 ;
+    <tag:stardog:studio:label> "hasMedicalNotes" ;
+    owl:propertyChainAxiom ( fse:hasClinicalDocument fse:hasLatestVersion fse:includesMedicalNotes ) .
+
+fse:hasImmunizationAgainst a owl:ObjectProperty ;
+    rdfs:label "hasImmunizationAgainst" ;
+    rdfs:domain fse:patient ;
+    rdfs:range obo:DOID_1205 ;
+    <tag:stardog:studio:label> "hasImmunizationAgainst" ;
+    owl:propertyChainAxiom ( fse:hasClinicalDocument fse:hasLatestVersion fse:prevents ) .
+
+fse:isOrganDonor a owl:ObjectProperty ;
+    rdfs:label "isOrganDonor" ;
+    rdfs:domain fse:patient ;
+    rdfs:range obo:DOID_1205 ;
+    <tag:stardog:studio:label> "isOrganDonor" ;
+    owl:propertyChainAxiom ( fse:hasClinicalDocument fse:hasLatestVersion fse:includesOrganDonor ) .
 
 fse:prevents a owl:ObjectProperty ;
     rdfs:label "prevents" ;
@@ -219,11 +279,11 @@ fse:for a owl:ObjectProperty ;
     rdfs:range obo:DRON_00000005 ;
     <tag:stardog:studio:label> "for" .
 
-fse:isOrganDonor a owl:DatatypeProperty ;
-    rdfs:label "isOrganDonor" ;
+fse:includesOrganDonor a owl:DatatypeProperty ;
+    rdfs:label "includesOrganDonor" ;
     rdfs:domain fse:summaryHealthProfile ;
     rdfs:range xsd:boolean ;
-    <tag:stardog:studio:label> "isOrganDonor" .
+    <tag:stardog:studio:label> "includesOrganDonor" .
 
 fse:hasResponsible a owl:ObjectProperty ;
     rdfs:label "hasResponsible" ;
@@ -269,23 +329,23 @@ fse:result a owl:DatatypeProperty ;
     rdfs:range xsd:boolean ;
     <tag:stardog:studio:label> "result" .
 
-fse:has a owl:ObjectProperty ;
-    rdfs:label "has" ;
+fse:includesPregnancy a owl:ObjectProperty ;
+    rdfs:label "includesPregnancy" ;
     rdfs:domain fse:summaryHealthProfile ;
     rdfs:range fse:pregnancy ;
-    <tag:stardog:studio:label> "has" .
+    <tag:stardog:studio:label> "includesPregnancy" .
 
-fse:hasMedicalNotes a owl:DatatypeProperty ;
-    rdfs:label "hasMedicalNotes" ;
+fse:includesMedicalNotes a owl:DatatypeProperty ;
+    rdfs:label "includesMedicalNotes" ;
     rdfs:domain fse:summaryHealthProfile ;
     rdfs:range xsd:string ;
-    <tag:stardog:studio:label> "hasMedicalNotes" .
+    <tag:stardog:studio:label> "includesMedicalNotes" .
 
-fse:hasAllergy a owl:ObjectProperty ;
-    rdfs:label "hasAllergy" ;
+fse:includesAllergy a owl:ObjectProperty ;
+    rdfs:label "includesAllergy" ;
     rdfs:domain fse:summaryHealthProfile ;
     rdfs:range obo:DOID_1205 ;
-    <tag:stardog:studio:label> "hasAllergy" .
+    <tag:stardog:studio:label> "includesAllergy" .
 
 fse:therapy a owl:Class ;
     rdfs:label "therapy" ;
@@ -319,11 +379,11 @@ fse:dailyQuantity a owl:DatatypeProperty ;
     rdfs:range xsd:decimal ;
     <tag:stardog:studio:label> "dailyQuantity" .
 
-fse:hasTherapy a owl:ObjectProperty ;
-    rdfs:label "hasTherapy" ;
+fse:includesTherapy a owl:ObjectProperty ;
+    rdfs:label "includesTherapy" ;
     rdfs:domain fse:summaryHealthProfile ;
     rdfs:range fse:therapy ;
-    <tag:stardog:studio:label> "hasTherapy" .
+    <tag:stardog:studio:label> "includesTherapy" .
 
 fse:hasCustodian a owl:ObjectProperty ;
     rdfs:label "hasCustodian" ;
@@ -348,11 +408,11 @@ fse:hasLaboratory a owl:ObjectProperty ;
     rdfs:range fse:laboratory ;
     <tag:stardog:studio:label> "hasLaboratory" .
 
-fse:hasDisease a owl:ObjectProperty ;
-    rdfs:label "hasDisease" ;
+fse:includesDisease a owl:ObjectProperty ;
+    rdfs:label "includesDisease" ;
     rdfs:domain fse:summaryHealthProfile ;
     rdfs:range obo:DOID_4 ;
-    <tag:stardog:studio:label> "hasDisease" .
+    <tag:stardog:studio:label> "includesDisease" .
 
 fse:reportType a owl:Class ;
     rdfs:label "reportType" ;
