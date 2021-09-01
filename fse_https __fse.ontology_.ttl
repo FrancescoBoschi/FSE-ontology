@@ -211,49 +211,56 @@ fse:hasAllergy a owl:ObjectProperty ;
     rdfs:label "hasAllergy" ;
     rdfs:domain fse:patient ;
     rdfs:range obo:DOID_1205 ;
-    <tag:stardog:studio:label> "hasAllergy" .
+    <tag:stardog:studio:label> "hasAllergy" ;
+    owl:propertyChainAxiom ( fse:hasClinicalDocument fse:hasLatestVersion fse:includesAllergy ) .
 
 fse:hasPregnancy a owl:ObjectProperty ;
     rdfs:subPropertyOf fse:hasField ;
     rdfs:label "hasPregnancy" ;
     rdfs:domain fse:patient ;
     rdfs:range obo:DOID_1205 ;
-    <tag:stardog:studio:label> "hasPregnancy" .
+    <tag:stardog:studio:label> "hasPregnancy" ;
+    owl:propertyChainAxiom ( fse:hasClinicalDocument fse:hasLatestVersion fse:includesPregnancy ) .
 
 fse:hasTherapy a owl:ObjectProperty ;
     rdfs:subPropertyOf fse:hasField ;
     rdfs:label "hasTherapy" ;
     rdfs:domain fse:patient ;
     rdfs:range obo:DOID_1205 ;
-    <tag:stardog:studio:label> "hasTherapy" .
+    <tag:stardog:studio:label> "hasTherapy" ;
+    owl:propertyChainAxiom ( fse:hasClinicalDocument fse:hasLatestVersion fse:includesTherapy ) .
 
 fse:hasDisease a owl:ObjectProperty ;
     rdfs:subPropertyOf fse:hasField ;
     rdfs:label "hasDisease" ;
     rdfs:domain fse:patient ;
     rdfs:range obo:DOID_1205 ;
-    <tag:stardog:studio:label> "hasDisease" .
+    <tag:stardog:studio:label> "hasDisease" ;
+    owl:propertyChainAxiom ( fse:hasClinicalDocument fse:hasLatestVersion fse:includesDisease ) .
 
 fse:hasMedicalNotes a owl:ObjectProperty ;
     rdfs:subPropertyOf fse:hasField ;
     rdfs:label "hasMedicalNotes" ;
     rdfs:domain fse:patient ;
     rdfs:range obo:DOID_1205 ;
-    <tag:stardog:studio:label> "hasMedicalNotes" .
+    <tag:stardog:studio:label> "hasMedicalNotes" ;
+    owl:propertyChainAxiom ( fse:hasClinicalDocument fse:hasLatestVersion fse:includesMedicalNotes ) .
 
 fse:hasImmunizationAgainst a owl:ObjectProperty ;
     rdfs:subPropertyOf fse:hasField ;
     rdfs:label "hasImmunizationAgainst" ;
     rdfs:domain fse:patient ;
     rdfs:range obo:DOID_1205 ;
-    <tag:stardog:studio:label> "hasImmunizationAgainst" .
+    <tag:stardog:studio:label> "hasImmunizationAgainst" ;
+    owl:propertyChainAxiom ( fse:hasClinicalDocument fse:hasLatestVersion fse:prevents ) .
 
 fse:isOrganDonor a owl:ObjectProperty ;
     rdfs:subPropertyOf fse:hasField ;
     rdfs:label "isOrganDonor" ;
     rdfs:domain fse:patient ;
     rdfs:range obo:DOID_1205 ;
-    <tag:stardog:studio:label> "isOrganDonor" .
+    <tag:stardog:studio:label> "isOrganDonor" ;
+    owl:propertyChainAxiom ( fse:hasClinicalDocument fse:hasLatestVersion fse:includesOrganDonor ) .
 
 fse:prevents a owl:ObjectProperty ;
     rdfs:subPropertyOf fse:includesField ;

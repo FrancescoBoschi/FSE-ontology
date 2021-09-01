@@ -67,7 +67,7 @@ const queries: Query[] = [
   },
   {
     name: "Conteggio documenti per organizzazione",
-    code : outdent`
+    code: outdent`
       SELECT ?ID ?Nome_Organizzazione (COUNT(?document) AS ?Documenti)
       FROM <https://fse.ontology/>
       WHERE {
@@ -79,7 +79,7 @@ const queries: Query[] = [
   },
   {
     name: "Pazienti con vaccini scaduti",
-    code : outdent`
+    code: outdent`
       SELECT ?ID (CONCAT(?name, " ", ?surname) AS ?Paziente) ?Documento ?Valido_fino_a
       FROM <https://fse.ontology/>
       WHERE {
@@ -93,11 +93,11 @@ const queries: Query[] = [
           foaf:lastName ?surname .
         FILTER(xsd:dateTime(?Valido_fino_a) < xsd:dateTime(NOW())) .
       }
-    `,
+    `
   },
   {
     name: "Percentuale di entrate in pronto soccorso con ambulanza",
-    code : outdent`
+    code: outdent`
       SELECT (100 * COUNT(?amb) / (COUNT(?id)) AS ?Percentuale)
       FROM <https://fse.ontology/>
       WHERE {
@@ -105,24 +105,38 @@ const queries: Query[] = [
           a fse:firstAidReport ;
           fse:cameWith ?amb .
       }
-    `,
+    `
   },
   {
     name: "Elenco donatori di organi",
-    code : outdent`
+    code: outdent`
       SELECT ?ID ?Nome ?Cognome
       FROM <https://fse.ontology/>
       WHERE {
-        ?doc
-          a fse:summaryHealthProfile ;
-          fse:refersTo ?ID ;
-          fse:isOrganDonor "true" .
         ?ID
+          fse:isOrganDonor "true" ;
           foaf:firstName ?Nome ;
           foaf:lastName ?Cognome .
       }
     `,
+    options: { reasoning: true }
   },
+  {
+    name: "Elenco allergie",
+    code: outdent`
+      SELECT ?ID ?Nome ?Cognome ?Cod_Allergia ?Descrizione
+      FROM <tag:stardog:api:context:all>
+      WHERE {
+        ?ID
+          foaf:firstName ?Nome ;
+          foaf:lastName ?Cognome ;
+          fse:hasAllergy ?Cod_Allergia .
+        ?Cod_Allergia
+          obo:IAO_0000115 ?Descrizione .
+      }
+    `,
+    options: { reasoning: true }
+  }
 ]
 
 const queriesStore = createRoot(() => {
