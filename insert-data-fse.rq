@@ -19,8 +19,9 @@ INSERT DATA {
             fse:refersTo <tag:stardog:api:#FRNPSC56S51F839H> ;
             fse:hasHumanAuthor <tag:stardog:api:#doctor_abarese> ;
             fse:hasCustodian <tag:stardog:api:#ausl> ;
+            fse:hasLatestVersion <tag:stardog:api:#rad_pfiorentino> ;
             fse:createdAt "2015-10-05T22:15:04" .
-        <#vac_pfiorentino>    
+        <#vac_pfiorentino>
             a fse:immunization ;
             fse:validUntil "2022-08-01" ;
             fse:prevents obo:DOID_0080600 ;
@@ -31,9 +32,10 @@ INSERT DATA {
             fse:confidentialityCode "N" ;
             fse:refersTo <tag:stardog:api:#FRNPSC56S51F839H> ;
             fse:hasDeviceAuthor <tag:stardog:api:#aifa_totem> ;
-            fse:hasCustodian <tag:stardog:api:#aifa> ; 
+            fse:hasCustodian <tag:stardog:api:#aifa> ;
+            fse:hasLatestVersion <tag:stardog:api:#vac_pfiorentino> ;
             fse:createdAt "2021-11-01T15:15:00" .
-        <#lab_bcosta> 
+        <#lab_bcosta>
             a fse:laboratoryMedicineReport ;
             fse:body "Risultato esami del sangue di laboratorio paziente B. Costa" ;
             fse:languageCode "it-IT" ;
@@ -44,6 +46,7 @@ INSERT DATA {
             fse:refersTo <tag:stardog:api:#CSTBRN86H62G273H> ;
             fse:hasHumanAuthor <tag:stardog:api:#nurse_alorenzo> ;
             fse:hasCustodian <tag:stardog:api:#ausl> ;
+            fse:hasLatestVersion <tag:stardog:api:#lab_bcosta> ;
             fse:createdAt "2018-05-28T08:51:10" .
         <#rad_bcosta>
             a fse:radiologyReport ;
@@ -54,9 +57,10 @@ INSERT DATA {
             fse:confidentialityCode "N" ;
             fse:refersTo <tag:stardog:api:#CSTBRN86H62G273H> ;
             fse:hasHumanAuthor <tag:stardog:api:#doctor_aparatore> ;
-            fse:hasCustodian <tag:stardog:api:#ausl> ;    
+            fse:hasCustodian <tag:stardog:api:#ausl> ;
+            fse:hasLatestVersion <tag:stardog:api:#rad_bcosta> ;
             fse:createdAt "2008-12-24T20:14:00" .
-        <#vps_bcosta> 
+        <#vps_bcosta>
             a fse:firstAidReport ;
             fse:body "Referto di primo soccorso paziente B. Costa" ;
             fse:languageCode "it-IT" ;
@@ -67,9 +71,10 @@ INSERT DATA {
             fse:refersTo <tag:stardog:api:#CSTBRN86H62G273H> ;
             fse:hasHumanAuthor <tag:stardog:api:#nurse_gvanni> ;
             fse:hasResponsible <tag:stardog:api:#doctor_aparatore> ;
-            fse:hasCustodian <tag:stardog:api:#ssn> ; 
+            fse:hasCustodian <tag:stardog:api:#ssn> ;
+            fse:hasLatestVersion <tag:stardog:api:#vps_bcosta> ;
             fse:createdAt "2014-07-20T21:41:54" .
-        <#vac_bcosta>    
+        <#vac_bcosta>
             a fse:immunization ;
             fse:validUntil "2022-05-05" ;
             fse:prevents obo:DOID_0080600 ;
@@ -80,7 +85,8 @@ INSERT DATA {
             fse:confidentialityCode "N" ;
             fse:refersTo <tag:stardog:api:#CSTBRN86H62G273H> ;
             fse:hasDeviceAuthor <tag:stardog:api:#aifa_totem> ;
-            fse:hasCustodian <tag:stardog:api:#aifa> ;    
+            fse:hasCustodian <tag:stardog:api:#aifa> ;
+            fse:hasLatestVersion <tag:stardog:api:#vac_bcosta> ;
             fse:createdAt "2021-08-08T14:12:50" .
         <#rsa_drossi>
             a fse:outpatientSpecialistReport ;
@@ -93,8 +99,9 @@ INSERT DATA {
             fse:refersTo <tag:stardog:api:#RSSDNI48C45C573H> ;
             fse:hasHumanAuthor <tag:stardog:api:#doctor_gmoccia> ;
             fse:hasCustodian <tag:stardog:api:#auser> ;
+            fse:hasLatestVersion <tag:stardog:api:#rsa_drossi> ;
             fse:createdAt "2020-07-15T07:35:58" .
-        <#vac_drossi>    
+        <#vac_drossi>
             a fse:immunization ;
             fse:validUntil "2022-02-09" ;
             fse:prevents obo:DOID_0080600 ;
@@ -105,8 +112,9 @@ INSERT DATA {
             fse:confidentialityCode "N" ;
             fse:refersTo <tag:stardog:api:#RSSDNI48C45C573H> ;
             fse:hasDeviceAuthor <tag:stardog:api:#aifa_totem> ;
-            fse:hasCustodian <tag:stardog:api:#aifa> ;  
-            fse:createdAt "2021-05-09T16:00:12" .     
+            fse:hasCustodian <tag:stardog:api:#aifa> ;
+            fse:hasLatestVersion <tag:stardog:api:#vac_drossi> ;
+            fse:createdAt "2021-05-09T16:00:12" .
         <#pss_vpinto>
             a fse:summaryHealthProfile ;
             fse:includesAllergy obo:DOID_0060532 ;
@@ -135,8 +143,9 @@ INSERT DATA {
             fse:refersTo <tag:stardog:api:#PSNFRU97L29G702B> ;
             fse:hasHumanAuthor <tag:stardog:api:#doctor_aarcuri> ;
             fse:hasCustodian <tag:stardog:api:#ordinemedici> ;
+            fse:hasLatestVersion <tag:stardog:api:#ldo_fpisano> ;
             fse:createdAt "2012-10-30T14:31:21" .
-        <#vac_fpisano>    
+        <#vac_fpisano>
             a fse:immunization ;
             fse:validUntil "2021-06-10" ;
             fse:prevents obo:DOID_0080600 ;
@@ -147,8 +156,9 @@ INSERT DATA {
             fse:confidentialityCode "N" ;
             fse:refersTo <tag:stardog:api:#PSNFRU97L29G702B> ;
             fse:hasDeviceAuthor <tag:stardog:api:#aifa_totem> ;
-            fse:hasCustodian <tag:stardog:api:#aifa> ;  
-            fse:createdAt "2021-05-10T10:12:40" .    
+            fse:hasCustodian <tag:stardog:api:#aifa> ;
+            fse:hasLatestVersion <tag:stardog:api:#vac_fpisano> ;
+            fse:createdAt "2021-05-10T10:12:40" .
         <#de_aesposito>
             a fse:exemption ;
             fse:body "Documento di esenzione paziente F. Pisano" ;
@@ -159,8 +169,9 @@ INSERT DATA {
             fse:refersTo <tag:stardog:api:#SPSNMR60S42F839P> ;
             fse:hasDeviceAuthor <tag:stardog:api:#ausl_totem> ;
             fse:hasCustodian <tag:stardog:api:#ausl> ;
+            fse:hasLatestVersion <tag:stardog:api:#de_aesposito> ;
             fse:createdAt "2010-10-12T14:12:35" .
-        <#vac_aesposito>    
+        <#vac_aesposito>
             a fse:immunization ;
             fse:validUntil "2021-08-12" ;
             fse:prevents obo:DOID_0080600 ;
@@ -171,9 +182,10 @@ INSERT DATA {
             fse:confidentialityCode "N" ;
             fse:refersTo <tag:stardog:api:#SPSNMR60S42F839P> ;
             fse:hasDeviceAuthor <tag:stardog:api:#aifa_totem> ;
-            fse:hasCustodian <tag:stardog:api:#aifa> ;   
-            fse:createdAt "2021-07-12T09:08:14" .   
-        <#prescription_acalabrese>    
+            fse:hasCustodian <tag:stardog:api:#aifa> ;
+            fse:hasLatestVersion <tag:stardog:api:#vac_aesposito> ;
+            fse:createdAt "2021-07-12T09:08:14" .
+        <#prescription_acalabrese>
             a fse:prescription ;
             fse:hasQuantity 2 ;
             fse:for obo:DRON_00074479 ;
@@ -185,8 +197,9 @@ INSERT DATA {
             fse:refersTo <tag:stardog:api:#CLBDLA93S07D969X> ;
             fse:hasHumanAuthor <tag:stardog:api:#doctor_aarcuri> ;
             fse:hasCustodian <tag:stardog:api:#ausl> ;
+            fse:hasLatestVersion <tag:stardog:api:#prescription_acalabrese> ;
             fse:createdAt "2021-10-23T18:30:15" .
-        <#vac_acalabrese>    
+        <#vac_acalabrese>
             a fse:immunization ;
             fse:validUntil "2022-03-30" ;
             fse:prevents obo:DOID_0080600 ;
@@ -198,8 +211,23 @@ INSERT DATA {
             fse:refersTo <tag:stardog:api:#CLBDLA93S07D969X> ;
             fse:hasDeviceAuthor <tag:stardog:api:#aifa_totem> ;
             fse:hasCustodian <tag:stardog:api:#aifa> ;
+            fse:hasLatestVersion <tag:stardog:api:#vac_acalabrese> ;
             fse:createdAt "2021-06-30T15:15:23" .
-        <#pss_acalabrese>
+        <#pss_acalabrese_1>
+            a fse:summaryHealthProfile ;
+            fse:includesAllergy obo:DOID_10608 ;
+            fse:includesMedicalNotes "Paziente ciliaco." ;
+            fse:body "Profilo Sanitario Sintetico paziente A. Calabrese" ;
+            fse:languageCode "it-IT" ;
+            fse:realmCode "IT" ;
+            fse:versionNumber 1 ;
+            fse:confidentialityCode "N" ;
+            fse:refersTo <tag:stardog:api:#CLBDLA93S07D969X> ;
+            fse:hasDeviceAuthor <tag:stardog:api:#ssn_totem> ;
+            fse:hasCustodian <tag:stardog:api:#ssn> ;
+            fse:hasLatestVersion <tag:stardog:api:#pss_acalabrese_2> ;
+            fse:createdAt "2015-01-20T10:15:46" .
+        <#pss_acalabrese_2>
             a fse:summaryHealthProfile ;
             fse:includesAllergy obo:DOID_10608 ;
             fse:includesAllergy obo:DOID_0040001 ;
@@ -209,12 +237,13 @@ INSERT DATA {
             fse:body "Profilo Sanitario Sintetico paziente A. Calabrese" ;
             fse:languageCode "it-IT" ;
             fse:realmCode "IT" ;
-            fse:versionNumber 1 ;
+            fse:versionNumber 2 ;
             fse:confidentialityCode "N" ;
             fse:refersTo <tag:stardog:api:#CLBDLA93S07D969X> ;
             fse:hasDeviceAuthor <tag:stardog:api:#ssn_totem> ;
-            fse:hasCustodian <tag:stardog:api:#ssn> ; 
-            fse:createdAt "2016-09-08T19:54:23" .                 
+            fse:hasCustodian <tag:stardog:api:#ssn> ;
+            fse:hasLatestVersion <tag:stardog:api:#pss_acalabrese_2> ;
+            fse:createdAt "2016-09-08T19:54:23" .
         <#vac_clori>
             a fse:immunization ;
             fse:validUntil "2031-05-04" ;
@@ -228,6 +257,7 @@ INSERT DATA {
             fse:refersTo <tag:stardog:api:#LROCAI84C04G702E> ;
             fse:hasDeviceAuthor <tag:stardog:api:#aifa_totem> ;
             fse:hasCustodian <tag:stardog:api:#aifa> ;
+            fse:hasLatestVersion <tag:stardog:api:#vac_clori> ;
             fse:createdAt "2021-05-04T17:08:54" .
         <#pss_clori>
             a fse:summaryHealthProfile ;
@@ -242,8 +272,9 @@ INSERT DATA {
             fse:confidentialityCode "N" ;
             fse:refersTo <tag:stardog:api:#LROCAI84C04G702E> ;
             fse:hasDeviceAuthor <tag:stardog:api:#ssn_totem> ;
-            fse:hasCustodian <tag:stardog:api:#ssn> ;        
-            fse:createdAt "2017-08-14T15:34:45" .    
+            fse:hasCustodian <tag:stardog:api:#ssn> ;
+            fse:hasLatestVersion <tag:stardog:api:#pss_clori> ;
+            fse:createdAt "2017-08-14T15:34:45" .
         # -------------------------
         # PREGNANCIES
         # -------------------------
@@ -251,7 +282,7 @@ INSERT DATA {
             a fse:pregnancy ;
             fse:startedAt "2003-01-01" ;
             fse:endedAt "2003-09-27" ;
-            fse:result "true" .     
+            fse:result "true" .
         # -------------------------
         # THERAPIES
         # -------------------------
@@ -259,7 +290,7 @@ INSERT DATA {
             a fse:therapy ;
             fse:startDate "2021-09-24" ;
             fse:dailyQuantity 1 ;
-            fse:hasMedicinal obo:DRON_00070584 . 
+            fse:hasMedicinal obo:DRON_00070584 .
         <#fugalinfectiontreatment_clori>
             a fse:therapy ;
             fse:startDate "2021-08-08" ;
@@ -269,7 +300,7 @@ INSERT DATA {
             a fse:therapy ;
             fse:startDate "2021-09-10" ;
             fse:dailyQuantity 2 ;
-            fse:hasMedicinal obo:CHEBI_55324 .            
+            fse:hasMedicinal obo:CHEBI_55324 .
         # -------------------------
         # DEVICES
         # -------------------------
@@ -284,16 +315,16 @@ INSERT DATA {
             fse:hasIdentifier "ausl_totem" .
         <#aifa_totem>
             a fse:device ;
-            fse:hasIdentifier "aifa_totem" .               
+            fse:hasIdentifier "aifa_totem" .
         # -------------------------
         # VEHICLES
         # -------------------------
         <#plate_ca128td>
             a fse:vehicle ;
-            fse:plate "CA128TD" .  
+            fse:plate "CA128TD" .
         <#plate_de843pr>
             a fse:vehicle ;
-            fse:plate "DE843PR" .            
+            fse:plate "DE843PR" .
         # -------------------------
         # PATIENTS
         # -------------------------
@@ -311,7 +342,7 @@ INSERT DATA {
             foaf:lastName "Rossi" ;
             foaf:birthday "05/03/1948" ;
             fse:fiscalCode "RSSDNI48C45C573H" ;
-            fse:healthCardNumber "80380800308945237892" .    
+            fse:healthCardNumber "80380800308945237892" .
         <#CSTBRN86H62G273H>
             a fse:patient ;
             foaf:firstName "Bruna" ;
@@ -348,14 +379,14 @@ INSERT DATA {
             foaf:birthday "07/11/1993" ;
             fse:fiscalCode "CLBDLA93S07D969X" ;
             fse:healthCardNumber "803808003087512326896" ;
-            fse:hasFamilyDoctor <tag:stardog:api:#doctor_aarcuri> .    
+            fse:hasFamilyDoctor <tag:stardog:api:#doctor_aarcuri> .
         <#LROCAI84C04G702E>
             a fse:patient ;
             foaf:firstName "Caio" ;
             foaf:lastName "Lori" ;
             foaf:birthday "04/03/1984" ;
             fse:fiscalCode "LROCAI84C04G702E" ;
-            fse:healthCardNumber "803808003045852135897" .              
+            fse:healthCardNumber "803808003045852135897" .
         # -------------------------
         # HEALTH WORKERS
         # -------------------------
@@ -403,7 +434,7 @@ INSERT DATA {
             foaf:firstName "Giovanni" ;
             foaf:lastName "Moccia" ;
             foaf:birthday "12/08/1974" ;
-            fse:belongsTo <tag:stardog:api:#auser> .         
+            fse:belongsTo <tag:stardog:api:#auser> .
         # -------------------------
         # NURSES
         # -------------------------
@@ -424,7 +455,7 @@ INSERT DATA {
             foaf:firstName "Giorgio" ;
             foaf:lastName "Vanni" ;
             foaf:birthday "15/02/1985" ;
-            fse:belongsTo <tag:stardog:api:#ssn> .    
+            fse:belongsTo <tag:stardog:api:#ssn> .
         <#nurse_cvanto>
             a fse:nurse ;
             foaf:firstName "Camilla" ;
@@ -436,7 +467,7 @@ INSERT DATA {
             foaf:firstName "Michele" ;
             foaf:lastName "Roccia" ;
             foaf:birthday "12/10/1984" ;
-            fse:belongsTo <tag:stardog:api:#auser> .    
+            fse:belongsTo <tag:stardog:api:#auser> .
         # -------------------------
         # HEALTH ORGANIZATIONS
         # -------------------------
@@ -453,17 +484,17 @@ INSERT DATA {
         <#aifa>
             a fse:healthOrganization ;
             org:identifier "Agenzia Italiana del Farmaco" ;
-            org:hasSite <tag:stardog:api:#sedeaifa> .   
+            org:hasSite <tag:stardog:api:#sedeaifa> .
         <#auser>
             a fse:healthOrganization ;
             org:identifier "Associazione per l'invecchiamento attivo" ;
             org:hasSite <tag:stardog:api:#rsabellora> ;
-            org:hasSite <tag:stardog:api:#rsamonsavano> . 
+            org:hasSite <tag:stardog:api:#rsamonsavano> .
         <#ssn>
             a fse:healthOrganization ;
             org:identifier "Servizio Sanitario Nazionale" ;
             org:hasSite <tag:stardog:api:#ospedalembufalini> ;
-            org:hasSite <tag:stardog:api:#ospedalesanraffaele> .             
+            org:hasSite <tag:stardog:api:#ospedalesanraffaele> .
         # -------------------------
         # HEALTHCARE FACILITY
         # -------------------------
@@ -472,19 +503,19 @@ INSERT DATA {
             org:siteAddress "Via della Rocca, 19 - Forlì" .
         <#sedelegaleusl>
             a fse:healthcareFacility ;
-            org:siteAddress "Via Castiglione, 29 -Bologna" .    
+            org:siteAddress "Via Castiglione, 29 -Bologna" .
         <#ospedalembufalini>
             a fse:healthcareFacility ;
             org:siteAddress "Viale Giovanni Ghirotti, 286 - Cesena" .
         <#ospedalesanraffaele>
             a fse:healthcareFacility ;
-            org:siteAddress "Via Olgettina, 60 - Milano" .    
+            org:siteAddress "Via Olgettina, 60 - Milano" .
         <#ufficiodoctor_cbelotti>
             a fse:healthcareFacility ;
             org:siteAddress "Via dell'Acquedotto, 31 - Perugia" .
         <#ufficiodoctor_abarese>
             a fse:healthcareFacility ;
-            org:siteAddress "Via Cervese, 1 - Forlì" .    
+            org:siteAddress "Via Cervese, 1 - Forlì" .
         <#sedeaifa>
             a fse:healthcareFacility ;
             org:siteAddress "Via del Tritone, 181 - Roma" .
@@ -493,10 +524,10 @@ INSERT DATA {
             org:siteAddress "Piazza Giovine Italia, 1 - Gallarate" .
         <#rsamonsavano>
             a fse:healthcareFacility ;
-            org:siteAddress "Via Fortuna, 1 - San Francesco" . 
+            org:siteAddress "Via Fortuna, 1 - San Francesco" .
         # -------------------------
         # LABORATORIES
-        # -------------------------  
+        # -------------------------
         <#lab_bianalisi>
             a fse:laboratory ;
             org:siteAddress "Via Maceri, 12 - Forlì" .
@@ -505,6 +536,6 @@ INSERT DATA {
             org:siteAddress "Via Pavese, 410 - Roma" .
         <#lab_synlab>
             a fse:laboratory ;
-            org:siteAddress "Via Zuccherificio, 153 - Cesena" .              
+            org:siteAddress "Via Zuccherificio, 153 - Cesena" .
     }
 }
