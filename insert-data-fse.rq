@@ -122,7 +122,8 @@ INSERT DATA {
             fse:includesTherapy <tag:stardog:api:#antihistamine_vpinto> ;
             fse:includesOrganDonor "true" ;
             fse:includesPregnancy <tag:stardog:api:#pregnancy_vpinto> ;
-            fse:includesMedicalNotes "Allergia stagionale che si manifesta sottoforma di asma" ;
+            fse:includesMedicalNotes "Allergia stagionale che si manifesta sottoforma di asma e malattia respiratoria del tratto tracheale" ;
+            fse:includesDisease obo:DOID_1579 ;
             fse:body "Profilo Sanitario Sintetico paziente V. Pinto" ;
             fse:languageCode "it-IT" ;
             fse:realmCode "IT" ;
@@ -231,9 +232,10 @@ INSERT DATA {
             a fse:summaryHealthProfile ;
             fse:includesAllergy obo:DOID_10608 ;
             fse:includesAllergy obo:DOID_0040001 ;
+            fse:includesDisease obo:DOID_10273 ;
             fse:includesTherapy <tag:stardog:api:#gastricacidity_acalabrese> ;
             fse:includesOrganDonor "true" ;
-            fse:includesMedicalNotes "Paziente ciliaco, allergia ai gamberi. Assume regolarmente medicianale per controllare l'acidità di stomaco." ;
+            fse:includesMedicalNotes "Paziente ciliaco, allergia ai gamberi. Assume regolarmente medicianale per controllare l'acidità di stomaco. Malattia cardiaca ereditaria." ;
             fse:body "Profilo Sanitario Sintetico paziente A. Calabrese" ;
             fse:languageCode "it-IT" ;
             fse:realmCode "IT" ;
@@ -262,9 +264,10 @@ INSERT DATA {
         <#pss_clori>
             a fse:summaryHealthProfile ;
             fse:includesAllergy obo:DOID_0050133 ;
+            fse:includesDisease obo:DOID_0060118 ;
             fse:includesTherapy <tag:stardog:api:#fugalinfectiontreatment_clori> ;
             fse:includesOrganDonor "false" ;
-            fse:includesMedicalNotes "Grave infezione da funghi che si manifesta con escoriazioni sulla pelle del paziente" ;
+            fse:includesMedicalNotes "Grave infezione da funghi che si manifesta con escoriazioni sulla pelle del paziente. Malformazione cavità toracica." ;
             fse:body "Profilo Sanitario Sintetico paziente C. Clori" ;
             fse:languageCode "it-IT" ;
             fse:realmCode "IT" ;
