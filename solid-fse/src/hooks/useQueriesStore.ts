@@ -78,24 +78,6 @@ const queries: Query[] = [
     `
   },
   {
-    name: "Pazienti con vaccini scaduti",
-    code: outdent`
-      SELECT ?ID (CONCAT(?name, " ", ?surname) AS ?Paziente) ?Documento ?Valido_fino_a
-      FROM <https://fse.ontology/>
-      WHERE {
-        ?doc
-          a fse:immunization ;
-          fse:refersTo ?ID ;
-          fse:body ?Documento ;
-          fse:validUntil ?Valido_fino_a .
-        ?ID
-          foaf:firstName ?name ;
-          foaf:lastName ?surname .
-        FILTER(xsd:dateTime(?Valido_fino_a) < xsd:dateTime(NOW())) .
-      }
-    `
-  },
-  {
     name: "Percentuale di entrate in pronto soccorso con ambulanza",
     code: outdent`
       SELECT (100 * COUNT(?amb) / (COUNT(?id)) AS ?Percentuale)
@@ -104,6 +86,25 @@ const queries: Query[] = [
         ?id
           a fse:firstAidReport ;
           fse:cameWith ?amb .
+      }
+    `
+  },
+  {
+    name: "Pazienti con vaccini scaduti",
+    code: outdent`
+      SELECT ?ID (CONCAT(?name, " ", ?surname) AS ?Paziente) ?Documento ?Valido_fino_a
+      FROM <https://fse.ontology/>
+      WHERE {
+        ?doc
+          a fse:immunization ;
+          fse:hasLatestVersion ?doc ;
+          fse:refersTo ?ID ;
+          fse:body ?Documento ;
+          fse:validUntil ?Valido_fino_a .
+        ?ID
+          foaf:firstName ?name ;
+          foaf:lastName ?surname .
+        FILTER(xsd:dateTime(?Valido_fino_a) < xsd:dateTime(NOW())) .
       }
     `
   },
