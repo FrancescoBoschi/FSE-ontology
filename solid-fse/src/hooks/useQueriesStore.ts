@@ -137,6 +137,22 @@ const queries: Query[] = [
       }
     `,
     options: { reasoning: true }
+  },
+  {
+    name: "Elenco malattie",
+    code: outdent`
+      SELECT ?ID ?Nome ?Cognome ?Cod_Malattia ?Descrizione
+      FROM <tag:stardog:api:context:all>
+      WHERE {
+        ?ID
+          foaf:firstName ?Nome ;
+          foaf:lastName ?Cognome ;
+          fse:hasDisease ?Cod_Malattia .
+        ?Cod_Malattia
+          obo:IAO_0000115 ?Descrizione .
+      }
+    `,
+    options: { reasoning: true }
   }
 ]
 
