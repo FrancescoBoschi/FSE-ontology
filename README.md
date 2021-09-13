@@ -21,7 +21,7 @@
     - LOINC (loinc)
     - ORG (org)
 
-    Le versioni delle ontologie utilizzate per il progetto sono disponibili all'indirizzo [https://google.com/drive](https://google.com/drive).\
+    Le versioni delle ontologie utilizzate per il progetto sono disponibili all'indirizzo [https://drive.google.com/drive/folders/1GFto2GoLGlaf-MHzgDcVUAqTOCW_1k0d?usp=sharing](https://drive.google.com/drive/folders/1GFto2GoLGlaf-MHzgDcVUAqTOCW_1k0d?usp=sharing).\
     Le ontologie dron e loinc contengono una quantità elevata di dati. In caso di problemi nell'importazione è possibile utilizzare il sistema anche senza di esse con alcune funzionalità limitate.
 
   - Creare un nuovo model con nome `fse` e IRI `https://fse.ontology`
